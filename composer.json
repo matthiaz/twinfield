@@ -61,5 +61,5 @@
     "branch-alias": {
       "php7.0": "master"
     }
-  },
+  }
 }
