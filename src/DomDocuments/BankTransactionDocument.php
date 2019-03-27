@@ -19,12 +19,12 @@ class BankTransactionDocument extends BaseDocument
      *
      * @return string
      */
-    final protected function getRootTagName(): string
+    final protected function getRootTagName()
     {
         return "transactions";
     }
 
-    public function addBankTransaction(BankTransaction $bankTransaction): void
+    public function addBankTransaction(BankTransaction $bankTransaction)
     {
         $transaction = $this->createElement("transaction");
 
@@ -81,7 +81,7 @@ class BankTransactionDocument extends BaseDocument
         $this->rootElement->appendChild($transaction);
     }
 
-    protected function createTransactionLineElement(BankTransactionLine\Base $line): \DOMElement
+    protected function createTransactionLineElement(BankTransactionLine\Base $line)
     {
         $transaction = $this->createElement("line");
         $transaction->appendChild(new \DOMAttr("type", $line->getLineType()));

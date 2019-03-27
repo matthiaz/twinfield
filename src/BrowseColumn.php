@@ -43,7 +43,7 @@ class BrowseColumn
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -52,7 +52,7 @@ class BrowseColumn
      * @param int $id
      * @return BrowseColumn
      */
-    public function setId(int $id): BrowseColumn
+    public function setId(int $id)
     {
         $this->id = $id;
         return $this;
@@ -61,7 +61,7 @@ class BrowseColumn
     /**
      * @return string
      */
-    public function getField(): string
+    public function getField()
     {
         return $this->field;
     }
@@ -70,7 +70,7 @@ class BrowseColumn
      * @param string $field
      * @return BrowseColumn
      */
-    public function setField(string $field): BrowseColumn
+    public function setField(string $field)
     {
         $this->field = $field;
         return $this;
@@ -79,7 +79,7 @@ class BrowseColumn
     /**
      * @return string|null
      */
-    public function getLabel(): ?string
+    public function getLabel()
     {
         return $this->label;
     }
@@ -88,7 +88,7 @@ class BrowseColumn
      * @param string $label
      * @return BrowseColumn
      */
-    public function setLabel(string $label): BrowseColumn
+    public function setLabel(string $label)
     {
         $this->label = $label;
         return $this;
@@ -97,7 +97,7 @@ class BrowseColumn
     /**
      * @return bool
      */
-    public function isVisible(): bool
+    public function isVisible()
     {
         return $this->visible;
     }
@@ -106,7 +106,7 @@ class BrowseColumn
      * @param bool $visible
      * @return BrowseColumn
      */
-    public function setVisible(bool $visible): BrowseColumn
+    public function setVisible(bool $visible)
     {
         $this->visible = $visible;
         return $this;
@@ -115,7 +115,7 @@ class BrowseColumn
     /**
      * @return bool
      */
-    public function isAsk(): bool
+    public function isAsk()
     {
         return $this->ask;
     }
@@ -124,7 +124,7 @@ class BrowseColumn
      * @param bool $ask
      * @return BrowseColumn
      */
-    public function setAsk(bool $ask): BrowseColumn
+    public function setAsk(bool $ask)
     {
         $this->ask = $ask;
         return $this;
@@ -133,7 +133,7 @@ class BrowseColumn
     /**
      * @return BrowseColumnOperator
      */
-    public function getOperator(): BrowseColumnOperator
+    public function getOperator()
     {
         return $this->operator;
     }
@@ -142,7 +142,7 @@ class BrowseColumn
      * @param BrowseColumnOperator $operator
      * @return BrowseColumn
      */
-    public function setOperator(BrowseColumnOperator $operator): BrowseColumn
+    public function setOperator(BrowseColumnOperator $operator)
     {
         $this->operator = $operator;
         return $this;
@@ -151,7 +151,7 @@ class BrowseColumn
     /**
      * @return string|null
      */
-    public function getFrom(): ?string
+    public function getFrom()
     {
         return $this->from;
     }
@@ -160,7 +160,7 @@ class BrowseColumn
      * @param string $from
      * @return BrowseColumn
      */
-    public function setFrom(string $from): BrowseColumn
+    public function setFrom(string $from)
     {
         $this->from = $from;
         return $this;
@@ -169,7 +169,7 @@ class BrowseColumn
     /**
      * @return string|null
      */
-    public function getTo(): ?string
+    public function getTo()
     {
         return $this->to;
     }
@@ -178,7 +178,7 @@ class BrowseColumn
      * @param string $to
      * @return BrowseColumn
      */
-    public function setTo(string $to): BrowseColumn
+    public function setTo(string $to)
     {
         $this->to = $to;
         return $this;

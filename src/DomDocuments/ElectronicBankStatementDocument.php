@@ -8,7 +8,7 @@ use PhpTwinfield\ElectronicBankStatement;
  */
 class ElectronicBankStatementDocument extends BaseDocument
 {
-    final protected function getRootTagName(): string
+    final protected function getRootTagName()
     {
         return "statements";
     }

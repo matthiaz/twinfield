@@ -24,7 +24,7 @@ use PhpTwinfield\Util;
  */
 class TransactionsDocument extends BaseDocument
 {
-    final protected function getRootTagName(): string
+    final protected function getRootTagName()
     {
         return "transactions";
     }

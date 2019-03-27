@@ -6,7 +6,7 @@ use PhpTwinfield\BookingReference;
 
 class BookingReferenceDeletionDocument extends BaseDocument
 {
-    protected function getRootTagName(): string
+    protected function getRootTagName()
     {
         return "transaction";
     }

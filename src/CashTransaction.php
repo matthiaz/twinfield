@@ -28,7 +28,7 @@ class CashTransaction extends BaseTransaction
     /**
      * @return string
      */
-    public function getLineClassName(): string
+    public function getLineClassName()
     {
         return CashTransactionLine::class;
     }
@@ -39,7 +39,7 @@ class CashTransaction extends BaseTransaction
      * @param Currency $currency
      * @return $this
      */
-    public function setCurrency(?Currency $currency): BaseTransaction
+    public function setCurrency(Currency $currency = null)
     {
         $this->traitSetCurrency($currency);
         return $this;

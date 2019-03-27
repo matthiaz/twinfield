@@ -49,7 +49,7 @@ class WebservicesAuthentication extends AuthenticatedConnection
      *
      * @throws Exception
      */
-    protected function login(): void
+    protected function login()
     {
         if ($this->sessionID) {
             return;
@@ -57,7 +57,7 @@ class WebservicesAuthentication extends AuthenticatedConnection
 
         $loginService = new class extends BaseService {
 
-            private const LOGIN_OK = "Ok";
+            const LOGIN_OK = "Ok";
 
             /**
              * @param string $username
@@ -66,7 +66,7 @@ class WebservicesAuthentication extends AuthenticatedConnection
              * @return string[]
              * @throws Exception
              */
-            public function getSessionIdAndCluster(string $username, string $password, string $organization): array
+            public function getSessionIdAndCluster(string $username, string $password, string $organization)
             {
                 $response = $this->Logon([
                     "user"         => $username,
@@ -99,13 +99,13 @@ class WebservicesAuthentication extends AuthenticatedConnection
                 return [$sessionId, $cluster];
             }
 
-            final protected function WSDL(): string
+            final protected function WSDL()
             {
                 return "https://login.twinfield.com/webservices/session.asmx?wsdl";
             }
         };
 
-        [$this->sessionID, $this->cluster] = $loginService->getSessionIdAndCluster($this->username, $this->password, $this->organization);
+        list($this->sessionID, $this->cluster) = $loginService->getSessionIdAndCluster($this->username, $this->password, $this->organization);
     }
 
     protected function getSoapHeaders()
@@ -117,7 +117,7 @@ class WebservicesAuthentication extends AuthenticatedConnection
         );
     }
 
-    protected function getCluster(): string
+    protected function getCluster()
     {
         return $this->cluster;
     }

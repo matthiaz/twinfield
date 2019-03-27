@@ -27,7 +27,7 @@ class MatchSet
     /**
      * @return Enums\MatchCode
      */
-    public function getMatchCode(): Enums\MatchCode
+    public function getMatchCode()
     {
         return $this->matchCode;
     }
@@ -46,7 +46,7 @@ class MatchSet
     /**
      * @return \DateTimeInterface
      */
-    public function getMatchDate(): \DateTimeInterface
+    public function getMatchDate()
     {
         return $this->matchDate;
     }
@@ -68,7 +68,7 @@ class MatchSet
      * @see \PhpTwinfield\MatchLine::addToMatchSet()
      * @return $this
      */
-    public function addLine(MatchLine $line): self
+    public function addLine(MatchLine $line)
     {
         Assert::false(in_array($line, $this->lines));
 
@@ -80,7 +80,7 @@ class MatchSet
     /**
      * @return MatchLine[]
      */
-    public function getLines(): array
+    public function getLines()
     {
         return $this->lines;
     }

@@ -38,7 +38,7 @@ class Vat extends Base
      * @param DebitCredit $debitCredit
      * @return Vat
      */
-    public function setDebitCredit(DebitCredit $debitCredit): self
+    public function setDebitCredit(DebitCredit $debitCredit)
     {
         return parent::setDebitCredit($debitCredit);
     }
@@ -48,7 +48,7 @@ class Vat extends Base
      *
      * @param Money $money
      */
-    public function setValue(Money $money): void
+    public function setValue(Money $money)
     {
         parent::setValue($money);
     }

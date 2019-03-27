@@ -60,7 +60,7 @@ abstract class Base implements TransactionLine
      *
      * @return BankTransaction
      */
-    public function getTransaction(): BankTransaction
+    public function getTransaction()
     {
         return $this->transaction;
     }
@@ -68,7 +68,7 @@ abstract class Base implements TransactionLine
     /**
      * @param BankTransaction $object
      */
-    public function setTransaction($object): void
+    public function setTransaction($object)
     {
         Assert::null($this->transaction, "Attempting to set a transaction while the transaction is already set.");
         Assert::isInstanceOf($object, BankTransaction::class);
@@ -78,7 +78,7 @@ abstract class Base implements TransactionLine
     /**
      * @return LineType
      */
-    final public function getLineType(): LineType
+    final public function getLineType()
     {
         return $this->lineType;
     }
@@ -96,7 +96,7 @@ abstract class Base implements TransactionLine
     /**
      * @return string
      */
-    public function getDescription(): ?string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -114,7 +114,7 @@ abstract class Base implements TransactionLine
     /**
      * @return null|Office
      */
-    public function getDestOffice(): ?Office
+    public function getDestOffice()
     {
         return $this->destOffice;
     }
@@ -131,7 +131,7 @@ abstract class Base implements TransactionLine
         return $this;
     }
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
@@ -146,7 +146,7 @@ abstract class Base implements TransactionLine
         return $this;
     }
 
-    public function getReference(): MatchReferenceInterface
+    public function getReference()
     {
         $transaction = $this->getTransaction();
 
@@ -158,7 +158,7 @@ abstract class Base implements TransactionLine
         );
     }
 
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return true;
     }

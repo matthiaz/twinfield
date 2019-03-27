@@ -107,12 +107,12 @@ class Article
         return $this;
     }
 
-    public function getAllowChangeVatCode(): bool
+    public function getAllowChangeVatCode()
     {
         return $this->allowChangeVatCode;
     }
 
-    public function setAllowChangeVatCode(bool $allowChangeVatCode): self
+    public function setAllowChangeVatCode(bool $allowChangeVatCode)
     {
         $this->allowChangeVatCode = $allowChangeVatCode;
         return $this;
@@ -152,34 +152,34 @@ class Article
         return $this;
     }
 
-    public function getAllowDiscountorPremium(): bool
+    public function getAllowDiscountorPremium()
     {
         return $this->allowDiscountorPremium;
     }
 
-    public function setAllowDiscountorPremium(bool $allowDiscountorPremium): self
+    public function setAllowDiscountorPremium(bool $allowDiscountorPremium)
     {
         $this->allowDiscountorPremium = $allowDiscountorPremium;
         return $this;
     }
 
-    public function getAllowChangeUnitsPrice(): bool
+    public function getAllowChangeUnitsPrice()
     {
         return $this->allowChangeUnitsPrice;
     }
 
-    public function setAllowChangeUnitsPrice(bool $allowChangeUnitsPrice): self
+    public function setAllowChangeUnitsPrice(bool $allowChangeUnitsPrice)
     {
         $this->allowChangeUnitsPrice = $allowChangeUnitsPrice;
         return $this;
     }
 
-    public function getAllowDecimalQuantity(): bool
+    public function getAllowDecimalQuantity()
     {
         return $this->allowDecimalQuantity;
     }
 
-    public function setAllowDecimalQuantity(bool $allowDecimalQuantity): self
+    public function setAllowDecimalQuantity(bool $allowDecimalQuantity)
     {
         $this->allowDecimalQuantity = $allowDecimalQuantity;
         return $this;

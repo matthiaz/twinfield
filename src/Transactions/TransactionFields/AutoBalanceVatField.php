@@ -14,7 +14,7 @@ trait AutoBalanceVatField
     /**
      * @return bool
      */
-    public function isAutoBalanceVat(): ?bool
+    public function isAutoBalanceVat()
     {
         return $this->autoBalanceVat;
     }
@@ -23,7 +23,7 @@ trait AutoBalanceVatField
      * @param bool $autoBalanceVat
      * @return $this
      */
-    public function setAutoBalanceVat(bool $autoBalanceVat): self
+    public function setAutoBalanceVat(bool $autoBalanceVat)
     {
         $this->autoBalanceVat = $autoBalanceVat;
 

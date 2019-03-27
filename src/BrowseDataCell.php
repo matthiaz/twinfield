@@ -19,7 +19,7 @@ class BrowseDataCell
     /**
      * @return string
      */
-    public function getField(): string
+    public function getField()
     {
         return $this->field;
     }
@@ -28,7 +28,7 @@ class BrowseDataCell
      * @param string $field
      * @return BrowseDataCell
      */
-    public function setField(string $field): BrowseDataCell
+    public function setField(string $field)
     {
         $this->field = $field;
         return $this;
@@ -37,7 +37,7 @@ class BrowseDataCell
     /**
      * @return bool
      */
-    public function isHideForUser(): bool
+    public function isHideForUser()
     {
         return $this->hideForUser;
     }
@@ -46,7 +46,7 @@ class BrowseDataCell
      * @param bool $hideForUser
      * @return BrowseDataCell
      */
-    public function setHideForUser(bool $hideForUser): BrowseDataCell
+    public function setHideForUser(bool $hideForUser)
     {
         $this->hideForUser = $hideForUser;
         return $this;
@@ -55,7 +55,7 @@ class BrowseDataCell
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -64,7 +64,7 @@ class BrowseDataCell
      * @param string $type
      * @return BrowseDataCell
      */
-    public function setType(string $type): BrowseDataCell
+    public function setType(string $type)
     {
         $this->type = $type;
         return $this;
@@ -82,7 +82,7 @@ class BrowseDataCell
      * @param mixed $value
      * @return BrowseDataCell
      */
-    public function setValue($value): BrowseDataCell
+    public function setValue($value)
     {
         $this->value = $value;
         return $this;

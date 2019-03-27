@@ -25,7 +25,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
     /**
      * @param PurchaseTransaction $object
      */
-    public function setTransaction($object): void
+    public function setTransaction($object)
     {
         Assert::null($this->transaction, "Attempting to set a transaction while the transaction is already set.");
         Assert::isInstanceOf($object, PurchaseTransaction::class);
@@ -37,7 +37,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      *
      * @return PurchaseTransaction
      */
-    public function getTransaction(): PurchaseTransaction
+    public function getTransaction()
     {
         return $this->transaction;
     }
@@ -54,7 +54,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1(?string $dim1): BaseTransactionLine
+    public function setDim1($dim1 = null)
     {
         return parent::setDim1($dim1);
     }
@@ -69,7 +69,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param string|null $dim2
      * @return $this
      */
-    public function setDim2(?string $dim2): BaseTransactionLine
+    public function setDim2($dim2 = null)
     {
         return parent::setDim2($dim2);
     }
@@ -86,7 +86,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param DebitCredit $debitCredit
      * @return $this
      */
-    public function setDebitCredit(DebitCredit $debitCredit): BaseTransactionLine
+    public function setDebitCredit(DebitCredit $debitCredit)
     {
         return parent::setDebitCredit($debitCredit);
     }
@@ -101,7 +101,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param Money $value
      * @return $this
      */
-    public function setValue(Money $value): BaseTransactionLine
+    public function setValue(Money $value)
     {
         return parent::setValue($value);
     }
@@ -113,7 +113,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchStatus(?string $matchStatus): BaseTransactionLine
+    public function setMatchStatus($matchStatus = null)
     {
         if (
             $matchStatus !== null &&
@@ -133,7 +133,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchLevel(?int $matchLevel): BaseTransactionLine
+    public function setMatchLevel($matchLevel = null)
     {
         if ($matchLevel !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('matchLevel', $this);
@@ -149,7 +149,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setBaseValueOpen(?Money $baseValueOpen): BaseTransactionLine
+    public function setBaseValueOpen(Money $baseValueOpen = null)
     {
         if ($baseValueOpen !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('baseValueOpen', $this);
@@ -167,7 +167,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      *
      * @return bool
      */
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return false;
     }

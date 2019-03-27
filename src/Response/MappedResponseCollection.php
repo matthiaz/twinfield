@@ -11,7 +11,7 @@ class MappedResponseCollection extends \ArrayObject
      *
      * @throws \InvalidArgumentException
      */
-    public function append($value): void
+    public function append($value)
     {
         if (!($value instanceof IndividualMappedResponse)) {
             throw new \InvalidArgumentException("Value has to be an object of type " . IndividualMappedResponse::class);
@@ -19,12 +19,12 @@ class MappedResponseCollection extends \ArrayObject
         parent::append($value);
     }
 
-    public function hasSuccessfulResponses(): bool
+    public function hasSuccessfulResponses()
     {
         return $this->countResponses(true) > 0;
     }
 
-    public function countSuccessfulResponses(): int
+    public function countSuccessfulResponses()
     {
         return $this->countResponses(true);
     }
@@ -32,17 +32,17 @@ class MappedResponseCollection extends \ArrayObject
     /**
      * @return IndividualMappedResponse[]
      */
-    public function getSuccessfulResponses(): array
+    public function getSuccessfulResponses()
     {
         return $this->getResponses(true);
     }
 
-    public function hasFailedResponses(): bool
+    public function hasFailedResponses()
     {
         return $this->countResponses(false) > 0;
     }
 
-    public function countFailedResponses(): int
+    public function countFailedResponses()
     {
         return $this->countResponses(false);
     }
@@ -50,7 +50,7 @@ class MappedResponseCollection extends \ArrayObject
     /**
      * @return IndividualMappedResponse[]
      */
-    public function getFailedResponses(): array
+    public function getFailedResponses()
     {
         return $this->getResponses(false);
     }
@@ -58,7 +58,7 @@ class MappedResponseCollection extends \ArrayObject
     /**
      * @throws \InvalidArgumentException
      */
-    public function assertAllSuccessful(): void
+    public function assertAllSuccessful()
     {
         Assert::eq($this->countResponses(false), 0);
     }
@@ -68,7 +68,7 @@ class MappedResponseCollection extends \ArrayObject
      *
      * @return IndividualMappedResponse[]
      */
-    private function getResponses(bool $successful): array
+    private function getResponses(bool $successful)
     {
         $responses = [];
 
@@ -82,7 +82,7 @@ class MappedResponseCollection extends \ArrayObject
         return $responses;
     }
 
-    private function countResponses(bool $successful): int
+    private function countResponses(bool $successful)
     {
         $count = 0;
 

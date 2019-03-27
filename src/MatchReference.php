@@ -32,22 +32,22 @@ final class MatchReference implements MatchReferenceInterface
         $this->lineId = $lineId;
     }
 
-    public function getOffice(): Office
+    public function getOffice()
     {
         return $this->bookingReference->getOffice();
     }
 
-    public function getCode(): string
+    public function getCode()
     {
         return $this->bookingReference->getCode();
     }
 
-    public function getNumber(): int
+    public function getNumber()
     {
         return $this->bookingReference->getNumber();
     }
 
-    public function getLineId(): int
+    public function getLineId()
     {
         return $this->lineId;
     }

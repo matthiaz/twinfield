@@ -26,7 +26,7 @@ class SalesTransactionLine extends BaseTransactionLine
     /**
      * @param SalesTransaction $object
      */
-    public function setTransaction($object): void
+    public function setTransaction($object)
     {
         Assert::null($this->transaction, "Attempting to set a transaction while the transaction is already set.");
         Assert::isInstanceOf($object, SalesTransaction::class);
@@ -38,7 +38,7 @@ class SalesTransactionLine extends BaseTransactionLine
      *
      * @return SalesTransaction
      */
-    public function getTransaction(): SalesTransaction
+    public function getTransaction()
     {
         return $this->transaction;
     }
@@ -55,7 +55,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1(?string $dim1): BaseTransactionLine
+    public function setDim1($dim1 = null)
     {
         return parent::setDim1($dim1);
     }
@@ -71,7 +71,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setDim2(?string $dim2): BaseTransactionLine
+    public function setDim2($dim2 = null)
     {
         if ($dim2 !== null && $this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidDimensionForLineType(2, $this);
@@ -92,7 +92,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @param DebitCredit $debitCredit
      * @return $this
      */
-    public function setDebitCredit(DebitCredit $debitCredit): BaseTransactionLine
+    public function setDebitCredit(DebitCredit $debitCredit)
     {
         return parent::setDebitCredit($debitCredit);
     }
@@ -107,7 +107,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @param Money $value
      * @return $this
      */
-    public function setValue(Money $value): BaseTransactionLine
+    public function setValue(Money $value)
     {
         return parent::setValue($value);
     }
@@ -119,7 +119,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchStatus(?string $matchStatus): BaseTransactionLine
+    public function setMatchStatus($matchStatus = null)
     {
         if (
             $matchStatus !== null &&
@@ -139,7 +139,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchLevel(?int $matchLevel): BaseTransactionLine
+    public function setMatchLevel($matchLevel = null)
     {
         if ($matchLevel !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('matchLevel', $this);
@@ -155,7 +155,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setBaseValueOpen(?Money $baseValueOpen): BaseTransactionLine
+    public function setBaseValueOpen(Money $baseValueOpen = null)
     {
         if ($baseValueOpen !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('baseValueOpen', $this);
@@ -187,7 +187,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setVatTurnover(?Money $vatTurnover)
+    public function setVatTurnover(Money $vatTurnover = null)
     {
         if (!$this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidFieldForLineType("vatturnover", $this);
@@ -202,7 +202,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setVatBaseTurnover(?Money $vatBaseTurnover)
+    public function setVatBaseTurnover(Money $vatBaseTurnover = null)
     {
         if (!$this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidFieldForLineType("vatbaseturnover", $this);
@@ -217,7 +217,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setVatRepTurnover(?Money $vatRepTurnover)
+    public function setVatRepTurnover(Money $vatRepTurnover = null)
     {
         if (!$this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidFieldForLineType("vatrepturnover", $this);
@@ -232,7 +232,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setBaseline(?int $baseline)
+    public function setBaseline($baseline = null)
     {
         if (!$this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidFieldForLineType("baseline", $this);
@@ -249,7 +249,7 @@ class SalesTransactionLine extends BaseTransactionLine
      *
      * @return bool
      */
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return true;
     }

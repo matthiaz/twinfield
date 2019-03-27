@@ -4,7 +4,7 @@ namespace PhpTwinfield;
 
 class Exception extends \Exception
 {
-    public static function invalidTransactionClassName(string $transactionClassName): self
+    public static function invalidTransactionClassName(string $transactionClassName)
     {
         return new self(sprintf(
             "Specified class name %s is not a subclass of BaseTransaction.",
@@ -12,7 +12,7 @@ class Exception extends \Exception
         ));
     }
 
-    public static function transactionLineDoesNotExist(string $transactionLineId): self
+    public static function transactionLineDoesNotExist(string $transactionLineId)
     {
         return new self(sprintf(
             "Specified transaction line with ID '%s' doesn't exist.",
@@ -20,7 +20,7 @@ class Exception extends \Exception
         ));
     }
 
-    public static function invalidLineTypeForTransaction(string $lineType, BaseTransactionLine $transactionLine): self
+    public static function invalidLineTypeForTransaction(string $lineType, BaseTransactionLine $transactionLine)
     {
         return new self(sprintf(
             "Invalid line type '%s' for transaction line class %s.",
@@ -29,7 +29,7 @@ class Exception extends \Exception
         ));
     }
 
-    public static function invalidDimensionForLineType(int $dimensionNumber, BaseTransactionLine $transactionLine): self
+    public static function invalidDimensionForLineType(int $dimensionNumber, BaseTransactionLine $transactionLine)
     {
         return new self(sprintf(
             "Dimension %d is invalid for line class %s and type '%s'.",
@@ -39,7 +39,7 @@ class Exception extends \Exception
         ));
     }
 
-    public static function invalidFieldForLineType(string $fieldName, BaseTransactionLine $transactionLine): self
+    public static function invalidFieldForLineType(string $fieldName, BaseTransactionLine $transactionLine)
     {
         return new self(sprintf(
             "Invalid field '%s' for line class %s and type '%s'.",

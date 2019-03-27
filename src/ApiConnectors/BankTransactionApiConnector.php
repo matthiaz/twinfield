@@ -22,7 +22,7 @@ class BankTransactionApiConnector extends BaseApiConnector
      * @return BankTransaction
      * @throws Exception
      */
-    public function send(BankTransaction $bankTransaction): BankTransaction
+    public function send(BankTransaction $bankTransaction)
     {
         $bankTransactionResponses = $this->sendAll([$bankTransaction]);
 
@@ -38,7 +38,7 @@ class BankTransactionApiConnector extends BaseApiConnector
      * @return MappedResponseCollection|IndividualMappedResponse[]
      * @throws Exception
      */
-    public function sendAll(array $bankTransactions): MappedResponseCollection
+    public function sendAll(array $bankTransactions)
     {
         Assert::allIsInstanceOf($bankTransactions, BankTransaction::class);
 

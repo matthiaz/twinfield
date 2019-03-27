@@ -32,7 +32,7 @@ class SupplierApiConnector extends BaseApiConnector
      * @return Supplier The requested supplier
      * @throws Exception
      */
-    public function get($code, Office $office): Supplier
+    public function get($code, Office $office)
     {
         // Make a request to read a single customer. Set the required values
         $request_customer = new Request\Read\Supplier();
@@ -54,7 +54,7 @@ class SupplierApiConnector extends BaseApiConnector
      *               [$supplierId => ['name' => $name, 'shortName' => $shortName], ...]
      * @throws Exception
      */
-    public function listAll(Office $office, string $dimType = 'CRD'): array
+    public function listAll(Office $office, string $dimType = 'CRD')
     {
 
         // Make a request to a list of all customers
@@ -96,7 +96,7 @@ class SupplierApiConnector extends BaseApiConnector
      * @return Supplier
      * @throws Exception
      */
-    public function send(Supplier $supplier): Supplier
+    public function send(Supplier $supplier)
     {
         $supplierResponses = $this->sendAll([$supplier]);
 
@@ -115,7 +115,7 @@ class SupplierApiConnector extends BaseApiConnector
      * @return MappedResponseCollection
      * @throws Exception
      */
-    public function sendAll(array $suppliers): MappedResponseCollection
+    public function sendAll(array $suppliers)
     {
         Assert::allIsInstanceOf($suppliers, Supplier::class);
 

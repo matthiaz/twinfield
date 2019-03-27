@@ -31,7 +31,7 @@ class BrowseData
     /**
      * @return int
      */
-    public function getFirst(): int
+    public function getFirst()
     {
         return $this->first;
     }
@@ -40,7 +40,7 @@ class BrowseData
      * @param int $first
      * @return BrowseData
      */
-    public function setFirst(int $first): BrowseData
+    public function setFirst(int $first)
     {
         $this->first = $first;
         return $this;
@@ -49,7 +49,7 @@ class BrowseData
     /**
      * @return int
      */
-    public function getLast(): int
+    public function getLast()
     {
         return $this->last;
     }
@@ -58,7 +58,7 @@ class BrowseData
      * @param int $last
      * @return BrowseData
      */
-    public function setLast(int $last): BrowseData
+    public function setLast(int $last)
     {
         $this->last = $last;
         return $this;
@@ -67,7 +67,7 @@ class BrowseData
     /**
      * @return int
      */
-    public function getTotal(): int
+    public function getTotal()
     {
         return $this->total;
     }
@@ -76,7 +76,7 @@ class BrowseData
      * @param int $total
      * @return BrowseData
      */
-    public function setTotal(int $total): BrowseData
+    public function setTotal(int $total)
     {
         $this->total = $total;
         return $this;
@@ -85,7 +85,7 @@ class BrowseData
     /**
      * @return BrowseDataHeader[]
      */
-    public function getHeaders(): array
+    public function getHeaders()
     {
         return $this->headers;
     }
@@ -101,7 +101,7 @@ class BrowseData
     /**
      * @return BrowseDataRow[]
      */
-    public function getRows(): array
+    public function getRows()
     {
         return $this->rows;
     }

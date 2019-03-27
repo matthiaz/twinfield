@@ -26,7 +26,7 @@ class SalesTransaction extends BaseTransaction
     /**
      * @return string
      */
-    public function getLineClassName(): string
+    public function getLineClassName()
     {
         return SalesTransactionLine::class;
     }
@@ -34,7 +34,7 @@ class SalesTransaction extends BaseTransaction
     /**
      * @return string|null
      */
-    public function getOriginReference(): ?string
+    public function getOriginReference()
     {
         return $this->originReference;
     }
@@ -43,7 +43,7 @@ class SalesTransaction extends BaseTransaction
      * @param string|null $originReference
      * @return $this
      */
-    public function setOriginReference(?string $originReference): SalesTransaction
+    public function setOriginReference($originReference = null)
     {
         $this->originReference = $originReference;
 
@@ -57,7 +57,7 @@ class SalesTransaction extends BaseTransaction
      * @param int|null $number
      * @return $this
      */
-    public function setNumber(?int $number): BaseTransaction
+    public function setNumber($number = null)
     {
         return parent::setNumber($number);
     }

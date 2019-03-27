@@ -26,32 +26,32 @@ class Office
         return $instance;
     }
 
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
 
-    public function setCode(string $code): void
+    public function setCode(string $code)
     {
         $this->code = $code;
     }
 
-    public function getCountryCode(): string
+    public function getCountryCode()
     {
         return $this->countryCode;
     }
 
-    public function setCountryCode(string $countryCode): void
+    public function setCountryCode(string $countryCode)
     {
         $this->countryCode = $countryCode;
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(string $name)
     {
         $this->name = $name;
     }

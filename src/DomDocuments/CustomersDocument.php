@@ -23,7 +23,7 @@ class CustomersDocument extends BaseDocument
      *
      * @return string
      */
-    protected function getRootTagName(): string
+    protected function getRootTagName()
     {
         return 'dimensions';
     }
@@ -34,7 +34,7 @@ class CustomersDocument extends BaseDocument
      *
      * @param Customer $customer
      */
-    public function addCustomer(Customer $customer): void
+    public function addCustomer(Customer $customer)
     {
         $customerEl = $this->createElement("dimension");
 
