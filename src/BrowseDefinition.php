@@ -34,7 +34,7 @@ class BrowseDefinition
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -43,7 +43,7 @@ class BrowseDefinition
      * @param string $code
      * @return BrowseDefinition
      */
-    public function setCode(string $code): BrowseDefinition
+    public function setCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -52,7 +52,7 @@ class BrowseDefinition
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -61,7 +61,7 @@ class BrowseDefinition
      * @param string $name
      * @return BrowseDefinition
      */
-    public function setName(string $name): BrowseDefinition
+    public function setName(string $name)
     {
         $this->name = $name;
         return $this;
@@ -70,7 +70,7 @@ class BrowseDefinition
     /**
      * @return string
      */
-    public function getShortName(): string
+    public function getShortName()
     {
         return $this->shortName;
     }
@@ -79,7 +79,7 @@ class BrowseDefinition
      * @param string $shortName
      * @return BrowseDefinition
      */
-    public function setShortName(string $shortName): BrowseDefinition
+    public function setShortName(string $shortName)
     {
         $this->shortName = $shortName;
         return $this;
@@ -88,7 +88,7 @@ class BrowseDefinition
     /**
      * @return bool
      */
-    public function isVisible(): bool
+    public function isVisible()
     {
         return $this->visible;
     }
@@ -97,7 +97,7 @@ class BrowseDefinition
      * @param bool $visible
      * @return BrowseDefinition
      */
-    public function setVisible(bool $visible): BrowseDefinition
+    public function setVisible(bool $visible)
     {
         $this->visible = $visible;
         return $this;

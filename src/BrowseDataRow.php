@@ -30,7 +30,7 @@ class BrowseDataRow
     /**
      * @return Office
      */
-    public function getOffice(): Office
+    public function getOffice()
     {
         return $this->office;
     }
@@ -39,7 +39,7 @@ class BrowseDataRow
      * @param Office $office
      * @return BrowseDataRow
      */
-    public function setOffice(Office $office): BrowseDataRow
+    public function setOffice(Office $office)
     {
         $this->office = $office;
         return $this;
@@ -48,7 +48,7 @@ class BrowseDataRow
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -57,7 +57,7 @@ class BrowseDataRow
      * @param string $code
      * @return BrowseDataRow
      */
-    public function setCode(string $code): BrowseDataRow
+    public function setCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -66,7 +66,7 @@ class BrowseDataRow
     /**
      * @return int
      */
-    public function getNumber(): int
+    public function getNumber()
     {
         return $this->number;
     }
@@ -75,7 +75,7 @@ class BrowseDataRow
      * @param int $number
      * @return BrowseDataRow
      */
-    public function setNumber(int $number): BrowseDataRow
+    public function setNumber(int $number)
     {
         $this->number = $number;
         return $this;
@@ -84,7 +84,7 @@ class BrowseDataRow
     /**
      * @return int
      */
-    public function getLine(): int
+    public function getLine()
     {
         return $this->line;
     }
@@ -93,7 +93,7 @@ class BrowseDataRow
      * @param int $line
      * @return BrowseDataRow
      */
-    public function setLine(int $line): BrowseDataRow
+    public function setLine(int $line)
     {
         $this->line = $line;
         return $this;
@@ -102,7 +102,7 @@ class BrowseDataRow
     /**
      * @return BrowseDataCell[]
      */
-    public function getCells(): array
+    public function getCells()
     {
         return $this->cells;
     }

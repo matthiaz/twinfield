@@ -32,7 +32,7 @@ class ArticleApiConnector extends BaseApiConnector
      * @return Article|bool The requested article or false if it can't be found.
      * @throws Exception
      */
-    public function get(string $code, Office $office): Article
+    public function get(string $code, Office $office)
     {
         // Make a request to read a single Article. Set the required values
         $request_article = new Request\Read\Article();
@@ -53,7 +53,7 @@ class ArticleApiConnector extends BaseApiConnector
      * @return Article
      * @throws Exception
      */
-    public function send(Article $article): Article
+    public function send(Article $article)
     {
         $articleResponses = $this->sendAll([$article]);
 
@@ -69,7 +69,7 @@ class ArticleApiConnector extends BaseApiConnector
      * @return MappedResponseCollection
      * @throws Exception
      */
-    public function sendAll(array $articles): MappedResponseCollection
+    public function sendAll(array $articles)
     {
         Assert::allIsInstanceOf($articles, Article::class);
 

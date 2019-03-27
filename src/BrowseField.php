@@ -30,7 +30,7 @@ class BrowseField
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -39,7 +39,7 @@ class BrowseField
      * @param string $code
      * @return BrowseField
      */
-    public function setCode(string $code): BrowseField
+    public function setCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -48,7 +48,7 @@ class BrowseField
     /**
      * @return string
      */
-    public function getDataType(): string
+    public function getDataType()
     {
         return $this->dataType;
     }
@@ -57,7 +57,7 @@ class BrowseField
      * @param string $dataType
      * @return BrowseField
      */
-    public function setDataType(string $dataType): BrowseField
+    public function setDataType(string $dataType)
     {
         $this->dataType = $dataType;
         return $this;
@@ -66,7 +66,7 @@ class BrowseField
     /**
      * @return string
      */
-    public function getFinder(): string
+    public function getFinder()
     {
         return $this->finder;
     }
@@ -75,7 +75,7 @@ class BrowseField
      * @param string $finder
      * @return BrowseField
      */
-    public function setFinder(string $finder): BrowseField
+    public function setFinder(string $finder)
     {
         $this->finder = $finder;
         return $this;
@@ -84,7 +84,7 @@ class BrowseField
     /**
      * @return BrowseFieldOption[]
      */
-    public function getOptions(): array
+    public function getOptions()
     {
         return $this->options;
     }
@@ -93,7 +93,7 @@ class BrowseField
      * @param BrowseFieldOption $option
      * @return BrowseField
      */
-    public function addOption(BrowseFieldOption $option): BrowseField
+    public function addOption(BrowseFieldOption $option)
     {
         $this->options[] = $option;
         return $this;
@@ -102,7 +102,7 @@ class BrowseField
     /**
      * @return bool
      */
-    public function isCanOrder(): bool
+    public function isCanOrder()
     {
         return $this->canOrder;
     }
@@ -111,7 +111,7 @@ class BrowseField
      * @param bool $canOrder
      * @return BrowseField
      */
-    public function setCanOrder(bool $canOrder): BrowseField
+    public function setCanOrder(bool $canOrder)
     {
         $this->canOrder = $canOrder;
         return $this;

@@ -26,7 +26,7 @@ class JournalTransactionLine extends BaseTransactionLine
     /**
      * @param JournalTransaction $object
      */
-    public function setTransaction($object): void
+    public function setTransaction($object)
     {
         Assert::null($this->transaction, "Attempting to set a transaction while the transaction is already set.");
         Assert::isInstanceOf($object, JournalTransaction::class);
@@ -38,7 +38,7 @@ class JournalTransactionLine extends BaseTransactionLine
      *
      * @return JournalTransaction
      */
-    public function getTransaction(): JournalTransaction
+    public function getTransaction()
     {
         return $this->transaction;
     }
@@ -48,7 +48,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setLineType(LineType $lineType): BaseTransactionLine
+    public function setLineType(LineType $lineType)
     {
         // Only 'detail' and 'vat' are supported.
         if ($lineType->equals(LineType::TOTAL())) {
@@ -67,7 +67,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1(?string $dim1): BaseTransactionLine
+    public function setDim1($dim1 = null)
     {
         return parent::setDim1($dim1);
     }
@@ -81,7 +81,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setDim2(?string $dim2): BaseTransactionLine
+    public function setDim2($dim2 = null)
     {
         if ($dim2 !== null && $this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidDimensionForLineType(2, $this);
@@ -98,7 +98,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @param Money $value
      * @return $this
      */
-    public function setValue(Money $value): BaseTransactionLine
+    public function setValue(Money $value)
     {
         parent::setValue($value);
         return $this;
@@ -109,7 +109,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setInvoiceNumber(?string $invoiceNumber): BaseTransactionLine
+    public function setInvoiceNumber($invoiceNumber = null)
     {
         if ($invoiceNumber !== null && !$this->getLineType()->equals(LineType::DETAIL())) {
             throw Exception::invalidFieldForLineType('invoiceNumber', $this);
@@ -125,7 +125,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchStatus(?string $matchStatus): BaseTransactionLine
+    public function setMatchStatus($matchStatus = null)
     {
         if (
             $matchStatus !== null &&
@@ -145,7 +145,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchLevel(?int $matchLevel): BaseTransactionLine
+    public function setMatchLevel($matchLevel = null)
     {
         if ($matchLevel !== null && !$this->getLineType()->equals(LineType::DETAIL())) {
             throw Exception::invalidFieldForLineType('matchLevel', $this);
@@ -161,7 +161,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setBaseValueOpen(?Money $baseValueOpen): BaseTransactionLine
+    public function setBaseValueOpen(Money $baseValueOpen = null)
     {
         if ($baseValueOpen !== null && !$this->getLineType()->equals(LineType::DETAIL())) {
             throw Exception::invalidFieldForLineType('baseValueOpen', $this);
@@ -179,7 +179,7 @@ class JournalTransactionLine extends BaseTransactionLine
      *
      * @return bool
      */
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return true;
     }

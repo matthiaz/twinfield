@@ -19,7 +19,7 @@ class BrowseDataHeader
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -28,7 +28,7 @@ class BrowseDataHeader
      * @param string $code
      * @return BrowseDataHeader
      */
-    public function setCode(string $code): BrowseDataHeader
+    public function setCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -37,7 +37,7 @@ class BrowseDataHeader
     /**
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->label;
     }
@@ -46,7 +46,7 @@ class BrowseDataHeader
      * @param string $label
      * @return BrowseDataHeader
      */
-    public function setLabel(string $label): BrowseDataHeader
+    public function setLabel(string $label)
     {
         $this->label = $label;
         return $this;
@@ -55,7 +55,7 @@ class BrowseDataHeader
     /**
      * @return bool
      */
-    public function isHideForUser(): bool
+    public function isHideForUser()
     {
         return $this->hideForUser;
     }
@@ -64,7 +64,7 @@ class BrowseDataHeader
      * @param bool $hideForUser
      * @return BrowseDataHeader
      */
-    public function setHideForUser(bool $hideForUser): BrowseDataHeader
+    public function setHideForUser(bool $hideForUser)
     {
         $this->hideForUser = $hideForUser;
         return $this;
@@ -73,7 +73,7 @@ class BrowseDataHeader
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -82,7 +82,7 @@ class BrowseDataHeader
      * @param string $type
      * @return BrowseDataHeader
      */
-    public function setType(string $type): BrowseDataHeader
+    public function setType(string $type)
     {
         $this->type = $type;
         return $this;

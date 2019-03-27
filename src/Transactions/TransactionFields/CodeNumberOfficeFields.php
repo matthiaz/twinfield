@@ -61,7 +61,7 @@ trait CodeNumberOfficeFields
      *
      * @return int
      */
-    public function getNumber(): ?int
+    public function getNumber()
     {
         return $this->number;
     }
@@ -71,7 +71,7 @@ trait CodeNumberOfficeFields
      *
      * @return BookingReference
      */
-    public function getBookingReference(): BookingReference
+    public function getBookingReference()
     {
         return new BookingReference(
             $this->office,

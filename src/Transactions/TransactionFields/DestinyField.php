@@ -13,7 +13,7 @@ trait DestinyField
      */
     private $destiny;
 
-    public function getDestiny(): Destiny
+    public function getDestiny()
     {
         return $this->destiny;
     }
@@ -22,7 +22,7 @@ trait DestinyField
      * @param Destiny $destiny
      * @return $this
      */
-    public function setDestiny(Destiny $destiny): self
+    public function setDestiny(Destiny $destiny)
     {
         $this->destiny = $destiny;
 

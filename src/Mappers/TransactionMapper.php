@@ -36,14 +36,14 @@ class TransactionMapper
      * @return iterable|BaseTransaction[]
      * @throws Exception
      */
-    public static function mapAll(string $transactionClassName, Response $response): iterable
+    public static function mapAll(string $transactionClassName, Response $response)
     {
         foreach ($response->getResponseDocument()->getElementsByTagName('transaction') as $transactionElement) {
             yield self::map($transactionClassName, $transactionElement);
         }
     }
 
-    public static function map(string $transactionClassName, Response $response): BaseTransaction
+    public static function map(string $transactionClassName, Response $response)
     {
         if (!is_a($transactionClassName, BaseTransaction::class, true)) {
             throw Exception::invalidTransactionClassName($transactionClassName);
@@ -236,7 +236,7 @@ class TransactionMapper
         return $transaction;
     }
 
-    private static function getField(BaseTransaction $transaction, \DOMElement $element, string $fieldTagName): ?string
+    private static function getField(BaseTransaction $transaction, \DOMElement $element, string $fieldTagName)
     {
         $fieldElement = $element->getElementsByTagName($fieldTagName)->item(0);
 
@@ -249,7 +249,7 @@ class TransactionMapper
         return $fieldElement->textContent;
     }
 
-    private static function checkForMessage(BaseTransaction $transaction, \DOMElement $element): void
+    private static function checkForMessage(BaseTransaction $transaction, \DOMElement $element)
     {
         if ($element->hasAttribute('msg')) {
             $message = new Message();

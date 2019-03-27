@@ -22,7 +22,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
      *
      * @var string[]
      */
-    private const RETRY_REQUEST_EXCEPTION_MESSAGES = [
+    const RETRY_REQUEST_EXCEPTION_MESSAGES = [
         "SSL: Connection reset by peer",
         "Your logon credentials are not valid anymore. Try to log on again."
     ];
@@ -30,7 +30,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
     /**
      * @var int
      */
-    private const MAX_RETRIES = 3;
+    const MAX_RETRIES = 3;
 
     /**
      * @var AuthenticatedConnection
@@ -51,7 +51,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
      * @see sendXmlDocument()
      * @throws Exception
      */
-    protected function getProcessXmlService(): ProcessXmlService
+    protected function getProcessXmlService()
     {
         return $this->connection->getAuthenticatedClient(Services::PROCESSXML());
     }
@@ -75,35 +75,41 @@ abstract class BaseApiConnector implements LoggerAwareInterface
             $this->logResponse($response);
 
             return $response;
-        } catch (\SoapFault | \ErrorException $exception) {
-            /*
-             * Always reset the client. There may have been TCP connection issues, network issues,
-             * or logic issues on Twinfield's side, it won't hurt to get a fresh connection.
-             */
-            $this->connection->resetClient(Services::PROCESSXML());
-
-            /* For a given set of exception messages, always retry the request. */
-            foreach (self::RETRY_REQUEST_EXCEPTION_MESSAGES as $message) {
-                if (stripos($exception->getMessage(), $message) === false) {
-                    continue;
-                }
-                $this->numRetries++;
-
-                if ($this->numRetries > self::MAX_RETRIES) {
-                    break;
-                }
-
-                $this->logRetry($exception);
-                return $this->sendXmlDocument($document);
-            }
-
-            $this->numRetries = 0;
-            $this->logFailedRequest($exception);
-            throw new Exception($exception->getMessage(), 0, $exception);
-        }
+        } catch(\SoapFault $exception) {
+			$this->retryOrError($document, $exception);
+		} catch(\ErrorException $exception){
+			$this->retryOrError($document, $exception);
+		}
     }
+	
+	private function retryOrError(\DOMDocument $document, $exception){
+		/*
+	 	 * Always reset the client. There may have been TCP connection issues, network issues,
+		 * or logic issues on Twinfield's side, it won't hurt to get a fresh connection.
+		 */
+		$this->connection->resetClient(Services::PROCESSXML());
 
-    private function logSendingDocument(\DOMDocument $document): void
+		/* For a given set of exception messages, always retry the request. */
+		foreach (self::RETRY_REQUEST_EXCEPTION_MESSAGES as $message) {
+			if (stripos($exception->getMessage(), $message) === false) {
+				continue;
+			}
+			$this->numRetries++;
+
+			if ($this->numRetries > self::MAX_RETRIES) {
+				break;
+			}
+
+			$this->logRetry($exception);
+			return $this->sendXmlDocument($document);
+		}
+
+		$this->numRetries = 0;
+		$this->logFailedRequest($exception);
+		throw new Exception($exception->getMessage(), 0, $exception);
+	}
+
+    private function logSendingDocument(\DOMDocument $document)
     {
         if (!$this->logger) {
             return;
@@ -122,7 +128,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
         );
     }
 
-    private function logResponse(Response $response): void
+    private function logResponse(Response $response)
     {
         if (!$this->logger) {
             return;
@@ -136,7 +142,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
         );
     }
 
-    private function logRetry(\Throwable $e): void
+    private function logRetry(\Throwable $e)
     {
         if (!$this->logger) {
             return;
@@ -145,7 +151,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
         $this->logger->info("Retrying request. Reason for initial failure: {$e->getMessage()}");
     }
 
-    private function logFailedRequest(\Throwable $e): void
+    private function logFailedRequest(\Throwable $e)
     {
         if (!$this->logger) {
             return;
@@ -157,7 +163,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
     /**
      * @throws Exception
      */
-    protected function getFinderService(): FinderService
+    protected function getFinderService()
     {
         return $this->connection->getAuthenticatedClient(Services::FINDER());
     }

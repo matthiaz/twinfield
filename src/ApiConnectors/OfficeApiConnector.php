@@ -28,7 +28,7 @@ class OfficeApiConnector extends BaseApiConnector
      * @throws \ErrorException
      * @return Office[] The offices found.
      */
-    public function listAllWithoutOfficeCode(): array
+    public function listAllWithoutOfficeCode()
     {
         $offices = [];
         $document = new OfficeRequestDocument();

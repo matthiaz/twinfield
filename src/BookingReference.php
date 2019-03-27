@@ -18,7 +18,7 @@ final class BookingReference implements BookingReferenceInterface
      */
     private $code;
 
-    public static function fromMatchReference(MatchReferenceInterface $matchReference): BookingReferenceInterface
+    public static function fromMatchReference(MatchReferenceInterface $matchReference)
     {
         return new self(
             $matchReference->getOffice(),
@@ -37,7 +37,7 @@ final class BookingReference implements BookingReferenceInterface
     /**
      * @inheritdoc
      */
-    public function getOffice(): Office
+    public function getOffice()
     {
         return $this->office;
     }
@@ -45,7 +45,7 @@ final class BookingReference implements BookingReferenceInterface
     /**
      * @inheritdoc
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -53,7 +53,7 @@ final class BookingReference implements BookingReferenceInterface
     /**
      * @inheritdoc
      */
-    public function getNumber(): int
+    public function getNumber()
     {
         return $this->number;
     }

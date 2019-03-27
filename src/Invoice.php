@@ -64,12 +64,12 @@ class Invoice
     /**
      * @return InvoiceLine[]
      */
-    public function getLines(): array
+    public function getLines()
     {
         return $this->lines;
     }
 
-    public function getCustomer(): Customer
+    public function getCustomer()
     {
         return $this->customer;
     }
@@ -86,7 +86,7 @@ class Invoice
         return $this;
     }
 
-    public function getTotals(): InvoiceTotals
+    public function getTotals()
     {
         return $this->totals;
     }
@@ -245,7 +245,7 @@ class Invoice
 	    return $this;
     }
 
-    public function getMatchReference(): MatchReferenceInterface
+    public function getMatchReference()
     {
         return new MatchReference($this->getOffice(), $this->getFinancialCode(), $this->getFinancialNumber(), 1);
     }

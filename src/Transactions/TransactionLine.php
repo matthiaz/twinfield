@@ -13,14 +13,14 @@ interface TransactionLine
      *
      * @return LineType
      */
-    public function getLineType(): LineType;
+    public function getLineType();
 
     /**
      * Get the id of the line (or null if not sent to Twinfield yet.
      *
      * @return int|null
      */
-    public function getId(): ?int;
+    public function getId();
 
     /**
      * Set the bank transaction on the line. This is needed later on.
@@ -29,7 +29,7 @@ interface TransactionLine
      * @throws \InvalidArgumentException If a transaction is invalid or if a transaction is already set.
      * @internal
      */
-    public function setTransaction($object): void;
+    public function setTransaction($object);
 
     /**
      * Gets the bank transaction from the line.
@@ -49,5 +49,5 @@ interface TransactionLine
      *
      * @return MatchReferenceInterface
      */
-    public function getReference(): MatchReferenceInterface;
+    public function getReference();
 }

@@ -55,7 +55,7 @@ class InvoiceApiConnector extends BaseApiConnector
      * @return Invoice
      * @throws Exception
      */
-    public function send(Invoice $invoice): Invoice
+    public function send(Invoice $invoice)
     {
         $invoiceResponses = $this->sendAll([$invoice]);
 
@@ -71,7 +71,7 @@ class InvoiceApiConnector extends BaseApiConnector
      * @return MappedResponseCollection
      * @throws Exception
      */
-    public function sendAll(array $invoices): MappedResponseCollection
+    public function sendAll(array $invoices)
     {
         Assert::allIsInstanceOf($invoices, Invoice::class);
 

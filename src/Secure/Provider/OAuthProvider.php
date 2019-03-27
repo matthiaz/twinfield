@@ -24,7 +24,7 @@ class OAuthProvider extends AbstractProvider
      * - twf.organisationUserCode - user code inside organisation
      * - twf.organisationId - GUID of organisation
      */
-    public const SCOPE_USER = 'twf.user';
+    const SCOPE_USER = 'twf.user';
 
     /**
      * twf.organisation - contains organisation information. This scope contains the following claims:
@@ -32,7 +32,7 @@ class OAuthProvider extends AbstractProvider
      * - twf.organisationId - GUID of organisation
      * - twf.clusterUrl - URL of cluster on which organisation is located
      */
-    public const SCOPE_ORGANISATION = 'twf.organisation';
+    const SCOPE_ORGANISATION = 'twf.organisation';
 
     /**
      * twf.organisationUser - contains information about organisation user. This scope contains the following claims:
@@ -42,19 +42,19 @@ class OAuthProvider extends AbstractProvider
      *
      * Note that the twf.organisationUser scope is mandatory in order to login.
      */
-    public const SCOPE_ORGANISATION_USER = 'twf.organisationUser';
+    const SCOPE_ORGANISATION_USER = 'twf.organisationUser';
 
     /**
      * This scope is required in order to receive and use refresh tokens.
      */
-    public const SCOPE_OFFLINE_ACCESS = "offline_access";
+    const SCOPE_OFFLINE_ACCESS = "offline_access";
 
     /**
      * This scope is required to retrieve information about the end-user that is logged in. This means this scope is
      * also required in order to use the SCOPE_USER scope. Using only this scope gives access to the id of the user
      * that is logged in, using the SCOPE_USER scope returns additional information.
      */
-    public const SCOPE_OPEN_ID = "openid";
+    const SCOPE_OPEN_ID = "openid";
 
     /**
      * @var string
@@ -64,7 +64,7 @@ class OAuthProvider extends AbstractProvider
     /**
      * Returns the base URL for authorizing a client.
      */
-    public function getBaseAuthorizationUrl(): string
+    public function getBaseAuthorizationUrl()
     {
         return 'https://login.twinfield.com/auth/authentication/connect/authorize';
     }
@@ -72,7 +72,7 @@ class OAuthProvider extends AbstractProvider
     /**
      * Returns the base URL for requesting an access token.
      */
-    public function getBaseAccessTokenUrl(array $params): string
+    public function getBaseAccessTokenUrl(array $params)
     {
         return 'https://login.twinfield.com/auth/authentication/connect/token';
     }
@@ -80,7 +80,7 @@ class OAuthProvider extends AbstractProvider
     /**
      * Returns the URL for requesting the resource owner's details.
      */
-    public function getResourceOwnerDetailsUrl(AccessToken $token): string
+    public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
         return 'https://login.twinfield.com/auth/authentication/connect/userinfo';
     }
@@ -92,7 +92,7 @@ class OAuthProvider extends AbstractProvider
      * be used in order to receive a refresh token and cluster URL. These are necessary to refresh the access
      * token and make requests to the correct endpoint.
      */
-    protected function getDefaultScopes(): array
+    protected function getDefaultScopes()
     {
         return [
             self::SCOPE_ORGANISATION_USER,
@@ -106,7 +106,7 @@ class OAuthProvider extends AbstractProvider
      * Returns the string that should be used to separate scopes when building
      * the URL for requesting an access token.
      */
-    protected function getScopeSeparator(): string
+    protected function getScopeSeparator()
     {
         return ' ';
     }
@@ -115,7 +115,7 @@ class OAuthProvider extends AbstractProvider
      * Returns authorization parameters based on provided options.
      * @throws OAuthException
      */
-    protected function getAuthorizationParameters(array $options): array
+    protected function getAuthorizationParameters(array $options)
     {
         /* The 'SCOPE_USER' scope can only be used in conjunction with the 'SCOPE_OPEN_ID' scope. */
         if (array_key_exists("scope", $options)) {
@@ -143,7 +143,7 @@ class OAuthProvider extends AbstractProvider
      * @param  array|string $data Parsed response data
      * @return void
      */
-    protected function checkResponse(ResponseInterface $response, $data): void
+    protected function checkResponse(ResponseInterface $response, $data)
     {
         if ($response->getStatusCode() < 400) {
             return;
@@ -169,7 +169,7 @@ class OAuthProvider extends AbstractProvider
     /**
      * Generates a resource owner object from a successful resource owner details request.
      */
-    protected function createResourceOwner(array $response, AccessToken $token): ResourceOwnerInterface
+    protected function createResourceOwner(array $response, AccessToken $token)
     {
         return new ResourceOwner($response);
     }

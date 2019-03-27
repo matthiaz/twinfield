@@ -21,7 +21,7 @@ class IndividualMappedResponse
         $this->mapper = $mapper;
     }
 
-    public function isSuccessful(): bool
+    public function isSuccessful()
     {
         try {
             $this->assertSuccessful();
@@ -34,7 +34,7 @@ class IndividualMappedResponse
     /**
      * @throws ResponseException
      */
-    public function assertSuccessful(): void
+    public function assertSuccessful()
     {
         try {
             $this->response->assertSuccessful();
@@ -65,7 +65,7 @@ class IndividualMappedResponse
     /**
      * @return string[]
      */
-    public function getErrorMessages(): array
+    public function getErrorMessages()
     {
         return $this->response->getErrorMessages();
     }
