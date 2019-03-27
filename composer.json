@@ -1,11 +1,11 @@
 {
-  "name": "christofverhoeven/twinfield",
+  "name": "php-twinfield/twinfield",
   "type": "library",
   "description": "Library for using the Twinfield Soap Service. (php7.0 version)",
   "keywords": [
     "twinfield"
   ],
-  "homepage": "https://github.com/christofverhoeven/twinfield",
+  "homepage": "https://github.com/php-twinfield/twinfield",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
