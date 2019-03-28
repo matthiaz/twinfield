@@ -57,7 +57,7 @@ class SalesTransaction extends BaseTransaction
      * @param int|null $number
      * @return $this
      */
-    public function setNumber($number = null)
+    public function setNumber(int $number = null)
     {
         return parent::setNumber($number);
     }
