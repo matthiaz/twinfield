@@ -63,7 +63,7 @@ class CustomerCollectMandate
      * @param \DateTimeInterface|null $date
      * @return $this
      */
-    public function setSignatureDate(\DateTimeInterface $date)
+    public function setSignatureDate(\DateTimeInterface $date = null)
     {
         $this->signatureDate = $date;
 
@@ -96,7 +96,7 @@ class CustomerCollectMandate
      * @param \DateTimeInterface|null $date
      * @return $this
      */
-    public function setFirstRunDate(\DateTimeInterface $date)
+    public function setFirstRunDate(\DateTimeInterface $date = null)
     {
         $this->firstRunDate = $date;
 
