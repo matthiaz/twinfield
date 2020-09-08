@@ -51,7 +51,7 @@ abstract class BaseTransaction extends BaseObject implements Transaction
      * @param Currency|null $currency
      * @return $this
      */
-    public function setCurrency(Currency $currency = null)
+    public function setCurrency(Currency $currency = null): BaseTransaction
     {
         $this->currency = $currency;
 
@@ -70,7 +70,7 @@ abstract class BaseTransaction extends BaseObject implements Transaction
      * @param string|null $origin
      * @return $this
      */
-    public function setOrigin($origin = null)
+    public function setOrigin($origin = null): BaseTransaction
     {
         $this->origin = $origin;
 

@@ -2,7 +2,7 @@
 A PHP library for Twinfield Integration.
 Use the Twinfield SOAP Services to have your PHP application communicate directly with your Twinfield account.
 
-**:warning: Note that this libary is *not* created or mainained by Twinfield. You can only get support on the code in this library here. For any questions related to your Twinfield administration or how to do certain things with the Twinfield API, contact your Twinfield account manager.** 
+**:warning: Note that this library is *not* created or maintained by Twinfield. You can only get support on the code in this library here. For any questions related to your Twinfield administration or how to do certain things with the Twinfield API, contact your Twinfield account manager.** 
 
 ## Installation
 
@@ -21,6 +21,14 @@ username and password authentication, the `\PhpTwinfield\Secure\WebservicesAuthe
 
 ```php
 $connection = new Secure\WebservicesAuthentication("username", "password", "organization");
+```
+
+Some endpoints allow you to filter on the Office, but for instance the BrowseData endpoint doesn't. For this you need to switch to the correct office before making the request, you can do this after authentication like so:
+
+```php
+$office = Office::fromCode("someOfficeCode");
+$officeApi = new \PhpTwinfield\ApiConnectors\OfficeApiConnector($connection);
+$officeApi->setOffice($office);
 ```
 
 In order to use OAuth2 to authenticate with Twinfield, one should use the `\PhpTwinfield\Secure\Provider\OAuthProvider` to retrieve an `\League\OAuth2\Client\Token\AccessToken` object, and extract the refresh token from this object. Furthermore, it is required to set up a default `\PhpTwinfield\Office`, that will be used during requests to Twinfield. **Please note:** when a different office is specified when sending a request through one of the `ApiConnectors`, this Office will override the default.
@@ -96,7 +104,7 @@ You can also send multiple objects in one batch, chunking is handled automatical
 
 ### Browse data
 In order to get financial data out of Twinfield like general ledger transactions, sales invoices, and so on, you can use the the browse data functionality.
-More information about the browse data functionality in Twinfield can be found in the [documentation](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Request/BrowseData).
+More information about the browse data functionality in Twinfield can be found in the [documentation](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Request/BrowseData).
 
 #### Browse definition
 
@@ -131,7 +139,7 @@ $columns[] = (new BrowseColumn())
     ->setLabel('Period')
     ->setVisible(true)
     ->setAsk(true)
-    ->setOperator('between')
+    ->setOperator(Enums\BrowseColumnOperator::BETWEEN())
     ->setFrom('2013/01')
     ->setTo('2013/12');
 
@@ -155,7 +163,7 @@ $columns[] = (new BrowseColumn())
     ->setLabel('General ledger')
     ->setVisible(true)
     ->setAsk(true)
-    ->setOperator('between')
+    ->setOperator(Enums\BrowseColumnOperator::BETWEEN())
     ->setFrom('1300')
     ->setTo('1300');
 
@@ -181,28 +189,104 @@ $sortFields[] = new BrowseSortField('fin.trs.head.code');
 $browseData = $connector->getBrowseData('000', $columns, $sortFields);
 ```
 
+### ApiConnector Configuration
+
+The ApiConnector has a constructor second parameter that can be used to configure some aspects of its operation.
+
+The ApiOptions has the following methods signature:
+
+```php
+/**
+ * This will allow you to enfornce the messages or the number of max retries.
+ * Passing null you will use the default values.
+ */
+public function __construct(?array $messages = null, ?int $maxRetries = null);
+/**
+ * This will allow you to get all the exception messages
+ */
+public function getRetriableExceptionMessages(): array
+/**
+ * This will allow you to replace the exception messages that should be retried
+ */
+public function setRetriableExceptionMessages(array $retriableExceptionMessages): ApiOptions
+/**
+ * This will allow you to add new messages to the array of exception messages
+ */
+public function addMessages(array $messages): ApiOptions
+/**
+ * This will allow you to get the number of max retries
+ */
+public function getMaxRetries(): int
+/**
+ * This will allow you to set the number of max retries
+ */
+public function setMaxRetries(int $maxRetries): ApiOptions
+```
+
+
+
+:exclamation: All the *get* methods will return a new instance with the configuration you changed.
+
+#### Configuration Examples
+
+Below are some examples on how to use the configuration object
+
+```php
+$connector = new BrowseDataApiConnector(
+    $connection,
+    new ApiOptions(
+        [
+            "SSL: Connection reset by peer",
+            "Bad Gateway"
+        ], 
+        3
+    )
+);
+```
+
+The example below will look for the default messages plus the "Bad Gateway" message.
+
+```php
+$options = new ApiOptions(
+    null, 
+    3
+);
+$connector = new BrowseDataApiConnector(
+    $connection,
+    $options->addMessages(["Bad Gateway"])
+);
+```
+
+#### Configuration default values
+
+| Attribute                    | Default Value                                                | Description                                                  |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Max retries                  | 3                                                            | The number of retries that should happen before throwing an error. |
+| Retriable exception messages | [ <br />"SSL: Connection reset by peer",     <br />"Your logon credentials are not valid anymore. Try to log on again." <br />] | The exception messages that should be match in order to retry automatically. |
+
 ### Supported resources
+
 Not all resources from the Twinfield API are currently implemented. Feel free to create a pull request when you need
 support for another resource.
 
 | Component                                                                                                       | get()              | listAll()          | send()             | delete()           |  Mapper             |
 | --------------------------------------------------------------------------------------------------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
-| [Articles](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Masters/Articles)                  | :white_check_mark: |                    | :white_check_mark: |                    | :white_check_mark: |
-| [BankTransaction](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Transactions/BankTransactions)|                  |                    | :white_check_mark: | :white_check_mark: |                    |
-| [Customer](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Masters/Customers)                 | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |
-| [Electronic Bank Statements](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Transactions/BankStatements)|         |                    | :white_check_mark: |                    |                    |
-| [Sales Invoices](https://c3.twinfield.com/webservices/documentation/#/ApiReference/SalesInvoices)               | :white_check_mark: |                    | :white_check_mark: |                    | :white_check_mark: |
-| [Matching](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Miscellaneous/Matching)            |                    |                    | :white_check_mark: |                    | :white_check_mark: |                    |
-| [Offices](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Masters/Offices)                    |                    | :white_check_mark: |                    |                    | :white_check_mark: |
-| [Suppliers](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Masters/Suppliers)                | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |
-| Transactions:<br> [Purchase](https://c3.twinfield.com/webservices/documentation/#/ApiReference/PurchaseTransactions), [Sale](https://c3.twinfield.com/webservices/documentation/#/ApiReference/SalesTransactions), [Journal](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Transactions/JournalTransactions), [Cash](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Transactions/CashTransactions) | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| [Users](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Masters/Users)                        |                    | :white_check_mark: |                    |                    |                    |
-| [Vat types](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Masters/VAT)                      |                    | :white_check_mark: |                    |                    |                    |
-| [Browse Data](https://c3.twinfield.com/webservices/documentation/#/ApiReference/Request/BrowseData)             | :white_check_mark: |                    |                    |                    | :white_check_mark: |
+| [Articles](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Masters/Articles)                  | :white_check_mark: |                    | :white_check_mark: |                    | :white_check_mark: |
+| [BankTransaction](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Transactions/BankTransactions)|                  |                    | :white_check_mark: | :white_check_mark: |                    |
+| [Customer](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Masters/Customers)                 | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |
+| [Electronic Bank Statements](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Transactions/BankStatements)|         |                    | :white_check_mark: |                    |                    |
+| [Sales Invoices](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/SalesInvoices)               | :white_check_mark: |                    | :white_check_mark: |                    | :white_check_mark: |
+| [Matching](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Miscellaneous/Matching)            |                    |                    | :white_check_mark: |                    | :white_check_mark: |                    |
+| [Offices](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Masters/Offices)                    |                    | :white_check_mark: |                    |                    | :white_check_mark: |
+| [Suppliers](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Masters/Suppliers)                | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |
+| Transactions:<br> [Purchase](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/PurchaseTransactions), [Sale](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/SalesTransactions), [Journal](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Transactions/JournalTransactions), [Cash](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Transactions/CashTransactions) | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| [Users](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Masters/Users)                        |                    | :white_check_mark: |                    |                    |                    |
+| [Vat types](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Masters/VAT)                      |                    | :white_check_mark: |                    |                    |                    |
+| [Browse Data](https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Request/BrowseData)             | :white_check_mark: |                    |                    |                    | :white_check_mark: |
 
 ## Links
 
-* [Twinfield API Documentation site](https://c3.twinfield.com/webservices/documentation/)
+* [Twinfield API Documentation site](https://accounting.twinfield.com/webservices/documentation/)
 
 
 ## Authors

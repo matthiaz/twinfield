@@ -2,8 +2,10 @@
 
 namespace PhpTwinfield\Secure;
 
+use PhpTwinfield\Enums\Services;
 use PhpTwinfield\Exception;
 use PhpTwinfield\Services\BaseService;
+use PhpTwinfield\Services\SessionService;
 
 class WebservicesAuthentication extends AuthenticatedConnection
 {
@@ -35,7 +37,7 @@ class WebservicesAuthentication extends AuthenticatedConnection
      * @access private
      * @var string
      */
-    private $cluster = 'https://c3.twinfield.com';
+    private $cluster = 'https://accounting.twinfield.com';
 
     public function __construct(string $username, string $password, string $organization)
     {
@@ -55,57 +57,9 @@ class WebservicesAuthentication extends AuthenticatedConnection
             return;
         }
 
-        $loginService = new class extends BaseService {
+        $sessionService = new SessionService();
 
-            const LOGIN_OK = "Ok";
-
-            /**
-             * @param string $username
-             * @param string $password
-             * @param string $organization
-             * @return string[]
-             * @throws Exception
-             */
-            public function getSessionIdAndCluster(string $username, string $password, string $organization)
-            {
-                $response = $this->Logon([
-                    "user"         => $username,
-                    "password"     => $password,
-                    "organisation" => $organization,
-                ]);
-
-                $result = $response->LogonResult;
-
-                // Check response is successful
-                if ($result !== self::LOGIN_OK) {
-                    throw new Exception("Failed logging in using the credentials, result was \"{$result}\".");
-                }
-
-                // Response from the logon request
-                $loginResponse = $this->__getLastResponse();
-
-                // Make a new DOM and load the response XML
-                $envelope = new \DOMDocument();
-                $envelope->loadXML($loginResponse);
-
-                // Gets SessionID
-                $sessionIdElements = $envelope->getElementsByTagName('SessionID');
-                $sessionId = $sessionIdElements->item(0)->textContent;
-
-                // Gets Cluster URL
-                $clusterElements = $envelope->getElementsByTagName('cluster');
-                $cluster = $clusterElements->item(0)->textContent;
-
-                return [$sessionId, $cluster];
-            }
-
-            final protected function WSDL()
-            {
-                return "https://login.twinfield.com/webservices/session.asmx?wsdl";
-            }
-        };
-
-        list($this->sessionID, $this->cluster) = $loginService->getSessionIdAndCluster($this->username, $this->password, $this->organization);
+        list($this->sessionID, $this->cluster) = $sessionService->getSessionIdAndCluster($this->username, $this->password, $this->organization);
     }
 
     protected function getSoapHeaders()
@@ -120,5 +74,19 @@ class WebservicesAuthentication extends AuthenticatedConnection
     protected function getCluster()
     {
         return $this->cluster;
+    }
+
+    public function resetClient(Services $service)
+    {
+        $this->sessionID = NULL;
+
+        parent::resetClient($service);
+    }
+
+    protected function resetAllClients()
+    {
+        $this->sessionID = NULL;
+
+        parent::resetAllClients();
     }
 }

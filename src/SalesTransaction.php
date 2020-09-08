@@ -2,17 +2,15 @@
 
 namespace PhpTwinfield;
 
-use PhpTwinfield\Transactions\TransactionFields\DueDateField;
 use PhpTwinfield\Transactions\TransactionFields\InvoiceNumberField;
 use PhpTwinfield\Transactions\TransactionFields\PaymentReferenceField;
 use PhpTwinfield\Transactions\TransactionLineFields\ThreeDimFields;
 
 /**
- * @link https://c3.twinfield.com/webservices/documentation/#/ApiReference/SalesTransactions
+ * @link https://accounting.twinfield.com/webservices/documentation/#/ApiReference/SalesTransactions
  */
 class SalesTransaction extends BaseTransaction
 {
-    use DueDateField;
     use InvoiceNumberField;
     use PaymentReferenceField;
     use ThreeDimFields;
@@ -43,7 +41,7 @@ class SalesTransaction extends BaseTransaction
      * @param string|null $originReference
      * @return $this
      */
-    public function setOriginReference($originReference = null)
+    public function setOriginReference(string $originReference = null): SalesTransaction
     {
         $this->originReference = $originReference;
 
@@ -57,7 +55,7 @@ class SalesTransaction extends BaseTransaction
      * @param int|null $number
      * @return $this
      */
-    public function setNumber(int $number = null)
+    public function setNumber(int $number = null): BaseTransaction
     {
         return parent::setNumber($number);
     }

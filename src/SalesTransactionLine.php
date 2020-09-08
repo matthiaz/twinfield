@@ -55,7 +55,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1($dim1 = null)
+    public function setDim1(string $dim1 = null): BaseTransactionLine
     {
         return parent::setDim1($dim1);
     }
@@ -71,7 +71,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setDim2($dim2 = null)
+    public function setDim2(string $dim2 = null): BaseTransactionLine
     {
         if ($dim2 !== null && $this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidDimensionForLineType(2, $this);
@@ -119,7 +119,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchStatus($matchStatus = null)
+    public function setMatchStatus(string $matchStatus = null): BaseTransactionLine
     {
         if (
             $matchStatus !== null &&
@@ -139,7 +139,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchLevel($matchLevel = null)
+    public function setMatchLevel(int $matchLevel = null): BaseTransactionLine
     {
         if ($matchLevel !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('matchLevel', $this);
@@ -155,7 +155,7 @@ class SalesTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setBaseValueOpen(Money $baseValueOpen = null)
+    public function setBaseValueOpen(Money $baseValueOpen = null): BaseTransactionLine
     {
         if ($baseValueOpen !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('baseValueOpen', $this);

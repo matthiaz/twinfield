@@ -11,7 +11,7 @@ use PhpTwinfield\Transactions\TransactionFields\StatementNumberField;
 use PhpTwinfield\Transactions\TransactionLine;
 
 /**
- * @link https://c3.twinfield.com/webservices/documentation/#/ApiReference/Transactions/CashTransactions
+ * @link https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Transactions/CashTransactions
  */
 class CashTransaction extends BaseTransaction
 {
@@ -39,7 +39,7 @@ class CashTransaction extends BaseTransaction
      * @param Currency $currency
      * @return $this
      */
-    public function setCurrency(Currency $currency = null)
+    public function setCurrency(Currency $currency = null): BaseTransaction
     {
         $this->traitSetCurrency($currency);
         return $this;

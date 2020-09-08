@@ -47,7 +47,7 @@ trait PerformanceFields
      * @return $this
      * @throws Exception
      */
-    public function setPerformanceType(PerformanceType $performanceType = null)
+    public function setPerformanceType(PerformanceType $performanceType = null): self
     {
         if (
             $performanceType !== null &&
@@ -74,7 +74,7 @@ trait PerformanceFields
      * @return $this
      * @throws Exception
      */
-    public function setPerformanceCountry($performanceCountry = null)
+    public function setPerformanceCountry($performanceCountry = null): self
     {
         if (
             $performanceCountry !== null &&
@@ -101,7 +101,7 @@ trait PerformanceFields
      * @return $this
      * @throws Exception
      */
-    public function setPerformanceVatNumber($performanceVatNumber = null)
+    public function setPerformanceVatNumber($performanceVatNumber = null): self
     {
         if (
             $performanceVatNumber !== null &&
@@ -128,7 +128,7 @@ trait PerformanceFields
      * @return $this
      * @throws Exception
      */
-    public function setPerformanceDate(\DateTimeInterface $performanceDate = null)
+    public function setPerformanceDate(\DateTimeInterface $performanceDate = null): self
     {
         if (
             $performanceDate !== null &&

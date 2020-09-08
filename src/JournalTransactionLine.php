@@ -67,7 +67,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1($dim1 = null)
+    public function setDim1($dim1 = null): BaseTransactionLine
     {
         return parent::setDim1($dim1);
     }
@@ -81,7 +81,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setDim2($dim2 = null)
+    public function setDim2($dim2 = null): BaseTransactionLine
     {
         if ($dim2 !== null && $this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidDimensionForLineType(2, $this);
@@ -109,7 +109,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setInvoiceNumber($invoiceNumber = null)
+    public function setInvoiceNumber($invoiceNumber = null): BaseTransactionLine
     {
         if ($invoiceNumber !== null && !$this->getLineType()->equals(LineType::DETAIL())) {
             throw Exception::invalidFieldForLineType('invoiceNumber', $this);
@@ -125,7 +125,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchStatus($matchStatus = null)
+    public function setMatchStatus($matchStatus = null): BaseTransactionLine
     {
         if (
             $matchStatus !== null &&
@@ -145,7 +145,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchLevel($matchLevel = null)
+    public function setMatchLevel($matchLevel = null): BaseTransactionLine
     {
         if ($matchLevel !== null && !$this->getLineType()->equals(LineType::DETAIL())) {
             throw Exception::invalidFieldForLineType('matchLevel', $this);
@@ -161,7 +161,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setBaseValueOpen(Money $baseValueOpen = null)
+    public function setBaseValueOpen(Money $baseValueOpen = null): BaseTransactionLine
     {
         if ($baseValueOpen !== null && !$this->getLineType()->equals(LineType::DETAIL())) {
             throw Exception::invalidFieldForLineType('baseValueOpen', $this);

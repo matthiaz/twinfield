@@ -20,7 +20,7 @@ use PhpTwinfield\Transactions\TransactionLineFields\VatTurnoverFields;
  * @todo $comment Comment set on the transaction line.
  * @todo $matches Contains matching information. Read-only attribute.
  *
- * @link https://c3.twinfield.com/webservices/documentation/#/ApiReference/Transactions/BankTransactions
+ * @link https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Transactions/BankTransactions
  */
 abstract class BaseTransactionLine implements TransactionLine
 {
@@ -97,7 +97,7 @@ abstract class BaseTransactionLine implements TransactionLine
     protected $matchLevel;
 
     /**
-     * @var Money|null Meaning differs per transaction type. Read-only attribute. See explanatio in the sub classes.
+     * @var Money|null Meaning differs per transaction type. Read-only attribute. See explanation in the sub classes.
      */
     protected $baseValueOpen;
 
@@ -139,7 +139,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param int|null $id
      * @return $this
      */
-    public function setId($id = null)
+    public function setId($id = null): BaseTransactionLine
     {
         $this->id = $id;
 
@@ -158,7 +158,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param Money|null $baseValue
      * @return $this
      */
-    public function setBaseValue(Money $baseValue = null)
+    public function setBaseValue(Money $baseValue = null): BaseTransactionLine
     {
         $this->baseValue = $baseValue;
 
@@ -177,7 +177,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param float|null $rate
      * @return $this
      */
-    public function setRate($rate = null)
+    public function setRate($rate = null): BaseTransactionLine
     {
         $this->rate = $rate;
 
@@ -196,7 +196,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param Money|null $repValue
      * @return $this
      */
-    public function setRepValue(Money $repValue = null)
+    public function setRepValue(Money $repValue = null): BaseTransactionLine
     {
         $this->repValue = $repValue;
 
@@ -215,7 +215,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param float|null $repRate
      * @return $this
      */
-    public function setRepRate($repRate = null)
+    public function setRepRate($repRate = null): BaseTransactionLine
     {
         $this->repRate = $repRate;
 
@@ -234,7 +234,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param string|null $description
      * @return $this
      */
-    public function setDescription($description = null)
+    public function setDescription($description = null): BaseTransactionLine
     {
         $this->description = $description;
 
@@ -253,7 +253,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param string|null $matchStatus
      * @return $this
      */
-    public function setMatchStatus($matchStatus = null)
+    public function setMatchStatus($matchStatus = null): BaseTransactionLine
     {
         $this->matchStatus = $matchStatus;
 
@@ -272,7 +272,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param int|null $matchLevel
      * @return $this
      */
-    public function setMatchLevel($matchLevel = null)
+    public function setMatchLevel($matchLevel = null): BaseTransactionLine
     {
         $this->matchLevel = $matchLevel;
 
@@ -291,7 +291,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param Money|null $baseValueOpen
      * @return $this
      */
-    public function setBaseValueOpen(Money $baseValueOpen = null)
+    public function setBaseValueOpen(Money $baseValueOpen = null): BaseTransactionLine
     {
         $this->baseValueOpen = $baseValueOpen;
 
@@ -311,7 +311,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setVatCode($vatCode = null)
+    public function setVatCode($vatCode = null): BaseTransactionLine
     {
         if ($vatCode !== null && !in_array($this->getLineType(), [LineType::DETAIL(), LineType::VAT()])) {
             throw Exception::invalidFieldForLineType('vatCode', $this);
@@ -335,7 +335,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setVatValue(Money $vatValue = null)
+    public function setVatValue(Money $vatValue = null): BaseTransactionLine
     {
         if ($vatValue !== null && !$this->getLineType()->equals(LineType::DETAIL())) {
             throw Exception::invalidFieldForLineType('vatValue', $this);

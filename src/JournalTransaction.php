@@ -3,7 +3,7 @@
 namespace PhpTwinfield;
 
 /**
- * @link https://c3.twinfield.com/webservices/documentation/#/ApiReference/Transactions/JournalTransactions
+ * @link https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Transactions/JournalTransactions
  */
 class JournalTransaction extends BaseTransaction
 {
@@ -39,7 +39,7 @@ class JournalTransaction extends BaseTransaction
      * @param string|null $regime
      * @return $this
      */
-    public function setRegime($regime = null)
+    public function setRegime(string $regime = null): JournalTransaction
     {
         $this->regime = $regime;
 

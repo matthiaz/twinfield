@@ -96,7 +96,7 @@ class MatchLine
     /**
      * Optional; only for partial payments. Include an "-" on credit lines.
      */
-    public function setMatchvalue(Money $matchvalue = null)
+    public function setMatchvalue(Money $matchvalue = null): self
     {
         $this->matchvalue = $matchvalue;
 

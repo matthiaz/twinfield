@@ -30,7 +30,7 @@ trait ValueOpenField
      * @return $this
      * @throws Exception
      */
-    public function setValueOpen(Money $valueOpen = null)
+    public function setValueOpen(Money $valueOpen = null): self
     {
         if ($valueOpen !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('valueOpen', $this);

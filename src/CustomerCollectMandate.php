@@ -6,7 +6,7 @@ use PhpTwinfield\Util;
 use Webmozart\Assert\Assert;
 
 /**
- * @see https://c3.twinfield.com/webservices/documentation/#/ApiReference/Masters/Customers
+ * @see https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Masters/Customers
  */
 class CustomerCollectMandate
 {
@@ -63,7 +63,7 @@ class CustomerCollectMandate
      * @param \DateTimeInterface|null $date
      * @return $this
      */
-    public function setSignatureDate(\DateTimeInterface $date = null)
+    public function setSignatureDate(\DateTimeInterface $date = null): self
     {
         $this->signatureDate = $date;
 
@@ -75,7 +75,7 @@ class CustomerCollectMandate
      * @return $this
      * @throws Exception
      */
-    public function setSignatureDateFromString($dateString = null)
+    public function setSignatureDateFromString($dateString = null): self
     {
         if (!empty($dateString)) {
             $dateString = Util::parseDate($dateString);
@@ -96,7 +96,7 @@ class CustomerCollectMandate
      * @param \DateTimeInterface|null $date
      * @return $this
      */
-    public function setFirstRunDate(\DateTimeInterface $date = null)
+    public function setFirstRunDate(\DateTimeInterface $date = null): self
     {
         $this->firstRunDate = $date;
 
@@ -108,7 +108,7 @@ class CustomerCollectMandate
      * @return $this
      * @throws Exception
      */
-    public function setFirstRunDateFromString($dateString = null)
+    public function setFirstRunDateFromString($dateString = null): self
     {
         if (!empty($dateString)) {
             $dateString = Util::parseDate($dateString);

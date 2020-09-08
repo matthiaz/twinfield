@@ -54,7 +54,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1($dim1 = null)
+    public function setDim1(string $dim1 = null): BaseTransactionLine
     {
         return parent::setDim1($dim1);
     }
@@ -69,7 +69,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param string|null $dim2
      * @return $this
      */
-    public function setDim2($dim2 = null)
+    public function setDim2(string $dim2 = null): BaseTransactionLine
     {
         return parent::setDim2($dim2);
     }
@@ -113,7 +113,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchStatus($matchStatus = null)
+    public function setMatchStatus(string $matchStatus = null): BaseTransactionLine
     {
         if (
             $matchStatus !== null &&
@@ -133,7 +133,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setMatchLevel($matchLevel = null)
+    public function setMatchLevel(int $matchLevel = null): BaseTransactionLine
     {
         if ($matchLevel !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('matchLevel', $this);
@@ -149,7 +149,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setBaseValueOpen(Money $baseValueOpen = null)
+    public function setBaseValueOpen(Money $baseValueOpen = null): BaseTransactionLine
     {
         if ($baseValueOpen !== null && !$this->getLineType()->equals(LineType::TOTAL())) {
             throw Exception::invalidFieldForLineType('baseValueOpen', $this);

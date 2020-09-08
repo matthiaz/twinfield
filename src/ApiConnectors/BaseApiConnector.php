@@ -8,6 +8,8 @@ use PhpTwinfield\Response\Response;
 use PhpTwinfield\Secure\AuthenticatedConnection;
 use PhpTwinfield\Services\FinderService;
 use PhpTwinfield\Services\ProcessXmlService;
+use PhpTwinfield\Services\SelectOfficeService;
+use PhpTwinfield\Services\SessionService;
 use PhpTwinfield\Util;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -15,22 +17,6 @@ use Psr\Log\LoggerAwareTrait;
 abstract class BaseApiConnector implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
-
-    /**
-     * Make sure to only add error messages for failure cases that caused the server not to accept / receive the
-     * request. Else the automatic retry will cause the request to be understood by the server twice.
-     *
-     * @var string[]
-     */
-    const RETRY_REQUEST_EXCEPTION_MESSAGES = [
-        "SSL: Connection reset by peer",
-        "Your logon credentials are not valid anymore. Try to log on again."
-    ];
-
-    /**
-     * @var int
-     */
-    const MAX_RETRIES = 3;
 
     /**
      * @var AuthenticatedConnection
@@ -42,9 +28,27 @@ abstract class BaseApiConnector implements LoggerAwareInterface
      */
     private $numRetries = 0;
 
-    public function __construct(AuthenticatedConnection $connection)
+    /**
+     * @var ApiOptions
+     */
+    private $options;
+
+    /**
+     * @throws \InvalidArgumentException
+     */
+    public function __construct(AuthenticatedConnection $connection, ApiOptions $options = null)
     {
         $this->connection = $connection;
+        if ($options === null) {
+            $this->options = new ApiOptions();
+        } else {
+            $this->options = $options;
+        }
+    }
+
+    public function getOptions(): ApiOptions
+    {
+        return $this->options;
     }
 
     /**
@@ -64,6 +68,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
      * @param \DOMDocument $document
      * @return \PhpTwinfield\Response\Response
      * @throws Exception
+     * @throws \RuntimeException
      */
     public function sendXmlDocument(\DOMDocument $document) {
         $this->logSendingDocument($document);
@@ -76,38 +81,38 @@ abstract class BaseApiConnector implements LoggerAwareInterface
 
             return $response;
         } catch(\SoapFault $exception) {
-			$this->retryOrError($document, $exception);
-		} catch(\ErrorException $exception){
-			$this->retryOrError($document, $exception);
-		}
+            $this->OnSendXmlError($exception, $document);
+        } catch(\ErrorException $exception){
+            $this->OnSendXmlError($exception, $document);
+        }
     }
 	
-	private function retryOrError(\DOMDocument $document, $exception){
-		/*
-	 	 * Always reset the client. There may have been TCP connection issues, network issues,
-		 * or logic issues on Twinfield's side, it won't hurt to get a fresh connection.
-		 */
-		$this->connection->resetClient(Services::PROCESSXML());
+	private function OnSendXmlError(\Exception $exception, \DOMDocument $document){
+        /*
+         * Always reset the client. There may have been TCP connection issues, network issues,
+         * or logic issues on Twinfield's side, it won't hurt to get a fresh connection.
+         */
+        $this->connection->resetClient(Services::PROCESSXML());
 
-		/* For a given set of exception messages, always retry the request. */
-		foreach (self::RETRY_REQUEST_EXCEPTION_MESSAGES as $message) {
-			if (stripos($exception->getMessage(), $message) === false) {
-				continue;
-			}
-			$this->numRetries++;
+        /* For a given set of exception messages, always retry the request. */
+        foreach ($this->getOptions()->getRetriableExceptionMessages() as $message) {
+           if (stripos($exception->getMessage(), $message) === false) {
+               continue;
+           }
+           $this->numRetries++;
 
-			if ($this->numRetries > self::MAX_RETRIES) {
-				break;
-			}
+           if ($this->numRetries > $this->getOptions()->getMaxRetries()) {
+               break;
+           }
 
-			$this->logRetry($exception);
-			return $this->sendXmlDocument($document);
-		}
+           $this->logRetry($exception);
+           return $this->sendXmlDocument($document);
+        }
 
-		$this->numRetries = 0;
-		$this->logFailedRequest($exception);
-		throw new Exception($exception->getMessage(), 0, $exception);
-	}
+        $this->numRetries = 0;
+        $this->logFailedRequest($exception);
+        throw new Exception($exception->getMessage(), 0, $exception);
+    }
 
     private function logSendingDocument(\DOMDocument $document)
     {
@@ -166,5 +171,13 @@ abstract class BaseApiConnector implements LoggerAwareInterface
     protected function getFinderService()
     {
         return $this->connection->getAuthenticatedClient(Services::FINDER());
+    }
+
+    /**
+     * @throws Exception
+     */
+    protected function getSessionService(): SessionService
+    {
+        return $this->connection->getAuthenticatedClient(Services::SESSION());
     }
 }

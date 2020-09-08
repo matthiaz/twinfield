@@ -39,11 +39,15 @@ final class Util
      * Parse a date string from a Twinfield XML.
      *
      * @param string $dateString
-     * @return \DateTimeImmutable
+     * @return \DateTimeImmutable|null
      * @throws Exception
      */
     public static function parseDate(string $dateString)
     {
+        if ($dateString === '') {
+            return null;
+        }
+
         $date = \DateTimeImmutable::createFromFormat("Ymd|", $dateString);
 
         if (false === $date) {
@@ -56,12 +60,14 @@ final class Util
     /**
      * Parse a date time string from a Twinfield XML.
      *
-     * @param string $dateString
-     * @return \DateTimeImmutable
      * @throws Exception
      */
     public static function parseDateTime(string $dateString)
     {
+        if ($dateString === '') {
+            return null;
+        }
+      
         $date = \DateTimeImmutable::createFromFormat("YmdHis", $dateString);
 
         if (false === $date) {

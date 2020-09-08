@@ -22,7 +22,7 @@ class OfficeApiConnector extends BaseApiConnector
      * List the available offices when you are using the OAuth based authentication and don't have an office code yet.
      * For more information following see.
      *
-     * @see https://c3.twinfield.com/webservices/documentation/#/ApiReference/Types/XmlWebServices
+     * @see https://accounting.twinfield.com/webservices/documentation/#/ApiReference/Types/XmlWebServices
      * @throws \SoapFault
      * @throws \PhpTwinfield\Exception
      * @throws \ErrorException
@@ -72,13 +72,32 @@ class OfficeApiConnector extends BaseApiConnector
 
         $offices = [];
         foreach ($response->data->Items->ArrayOfString as $officeArray) {
-            $office = new Office();
+          $office = new Office();
+          if(is_array($officeArray)) {
+            $office->setCode($officeArray[0]);
+            $office->setCountryCode($officeArray[2]);
+            $office->setName($officeArray[1]);
+          } else {
             $office->setCode($officeArray->string[0]);
             $office->setCountryCode($officeArray->string[2]);
             $office->setName($officeArray->string[1]);
-            $offices[] = $office;
+          }
+          $offices[] = $office;
         }
 
         return $offices;
+    }
+
+    /**
+     * Selects the current office
+     * @param Office $office
+     * @return bool
+     * @throws \PhpTwinfield\Exception
+     */
+    public function setOffice(Office $office)
+    {
+        $response = $this->getSessionService()->setOffice($office);
+
+        return $response;
     }
 }
