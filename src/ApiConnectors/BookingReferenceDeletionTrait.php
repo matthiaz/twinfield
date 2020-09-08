@@ -9,7 +9,7 @@ use PhpTwinfield\Services\ProcessXmlService;
 
 trait BookingReferenceDeletionTrait
 {
-    abstract protected function getProcessXmlService(): ProcessXmlService;
+    abstract protected function getProcessXmlService();
 
     /**
      * Delete a bank / sales transaction by its booking reference.

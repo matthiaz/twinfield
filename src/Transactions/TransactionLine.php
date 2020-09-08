@@ -13,7 +13,7 @@ interface TransactionLine
      *
      * @return LineType
      */
-    public function getLineType(): LineType;
+    public function getLineType();
 
     /**
      * Get the id of the line (or null if not sent to Twinfield yet.
@@ -49,5 +49,5 @@ interface TransactionLine
      *
      * @return MatchReferenceInterface
      */
-    public function getReference(): MatchReferenceInterface;
+    public function getReference();
 }

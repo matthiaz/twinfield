@@ -24,7 +24,7 @@ trait OfficeField
     /**
      * @return $this
      */
-    public function setOffice(Office $office): self
+    public function setOffice(Office $office)
     {
         $this->office = $office;
 

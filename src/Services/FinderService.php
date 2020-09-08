@@ -59,7 +59,7 @@ class FinderService extends BaseService
     const TYPE_VAT_GROUPS_COUNTRIES = 'VGM';
     const TYPE_TRANSLATIONS = 'XLT';
 
-    protected function WSDL(): string
+    protected function WSDL()
     {
         return '/webservices/finder.asmx?wsdl';
     }

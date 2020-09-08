@@ -17,7 +17,7 @@ class BankTransactionMapper extends BaseMapper
     /**
      * @throws \PhpTwinfield\Exception
      */
-    public static function map(\DOMDocument $document): BankTransaction
+    public static function map(\DOMDocument $document)
     {
         $bankTransaction = new BankTransaction();
 
@@ -58,7 +58,7 @@ class BankTransactionMapper extends BaseMapper
         return $bankTransaction;
     }
 
-    private static function createTotalBankTransactionLine(BankTransaction $bankTransaction, \DOMElement $lineElement): Total
+    private static function createTotalBankTransactionLine(BankTransaction $bankTransaction, \DOMElement $lineElement)
     {
         $line = new Total();
         self::setBankTransactionLineBaseFields($bankTransaction, $lineElement, $line);
@@ -81,7 +81,7 @@ class BankTransactionMapper extends BaseMapper
         return $line;
     }
 
-    private static function createDetailBankTransactionLine(BankTransaction $bankTransaction, \DOMElement $lineElement): Detail
+    private static function createDetailBankTransactionLine(BankTransaction $bankTransaction, \DOMElement $lineElement)
     {
         $line = new Detail();
         self::setBankTransactionLineBaseFields($bankTransaction, $lineElement, $line);
@@ -117,7 +117,7 @@ class BankTransactionMapper extends BaseMapper
         return $line;
     }
 
-    private static function createVatBankTransactionLine(BankTransaction $bankTransaction, \DOMElement $lineElement): Vat
+    private static function createVatBankTransactionLine(BankTransaction $bankTransaction, \DOMElement $lineElement)
     {
         $line = new Vat();
         self::setBankTransactionLineBaseFields($bankTransaction, $lineElement, $line);

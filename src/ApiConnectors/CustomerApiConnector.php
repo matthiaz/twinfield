@@ -32,7 +32,7 @@ class CustomerApiConnector extends BaseApiConnector
      * @return Customer The requested customer
      * @throws Exception
      */
-    public function get(string $code, Office $office): Customer
+    public function get(string $code, Office $office)
     {
         // Make a request to read a single customer. Set the required values
         $request_customer = new Request\Read\Customer();
@@ -54,7 +54,7 @@ class CustomerApiConnector extends BaseApiConnector
      *
      * @throws Exception
      */
-    public function listAll(Office $office): array
+    public function listAll(Office $office)
     {
         // Make a request to a list of all customers
         $request_customers = new Request\Catalog\Dimension($office, "DEB");
@@ -93,7 +93,7 @@ class CustomerApiConnector extends BaseApiConnector
      * @return Customer
      * @throws Exception
      */
-    public function send(Customer $customer): Customer
+    public function send(Customer $customer)
     {
         $customerResponses = $this->sendAll([$customer]);
 
@@ -109,7 +109,7 @@ class CustomerApiConnector extends BaseApiConnector
      * @return MappedResponseCollection
      * @throws Exception
      */
-    public function sendAll(array $customers): MappedResponseCollection
+    public function sendAll(array $customers)
     {
         Assert::allIsInstanceOf($customers, Customer::class);
 

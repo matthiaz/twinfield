@@ -18,7 +18,7 @@ class PurchaseTransaction extends BaseTransaction
     /**
      * @return string
      */
-    public function getLineClassName(): string
+    public function getLineClassName()
     {
         return PurchaseTransactionLine::class;
     }

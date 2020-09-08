@@ -20,7 +20,7 @@ class MatchesApiConnector extends BaseApiConnector
     /**
      * @throws Exception
      */
-    public function send(MatchSet $matchSet): MatchSet
+    public function send(MatchSet $matchSet)
     {
         return $this->sendAll([$matchSet])[0]->unwrap();
     }
@@ -30,7 +30,7 @@ class MatchesApiConnector extends BaseApiConnector
      *
      * @throws Exception
      */
-    public function sendAll(array $matchSets): MappedResponseCollection
+    public function sendAll(array $matchSets)
     {
         Assert::allIsInstanceOf($matchSets, MatchSet::class);
 

@@ -64,7 +64,7 @@ class ElectronicBankStatementTransaction
         $this->contraaccount = null;
     }
 
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -84,7 +84,7 @@ class ElectronicBankStatementTransaction
         $this->reference = $reference;
     }
 
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -111,7 +111,7 @@ class ElectronicBankStatementTransaction
      *
      * @return bool
      */
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return true;
     }

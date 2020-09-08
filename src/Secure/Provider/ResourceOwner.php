@@ -19,7 +19,7 @@ class ResourceOwner implements ResourceOwnerInterface
     /**
      * Returns the identifier of the authorized resource owner.
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->response["sub"];
     }
@@ -27,7 +27,7 @@ class ResourceOwner implements ResourceOwnerInterface
     /**
      * Return all of the owner details available as an array.
      */
-    public function toArray(): array
+    public function toArray()
     {
         return $this->response;
     }

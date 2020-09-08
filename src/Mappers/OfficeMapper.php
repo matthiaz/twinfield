@@ -19,7 +19,7 @@ class OfficeMapper extends BaseMapper
      * @param Response $response
      * @return \Generator
      */
-    public static function mapAll(Response $response): \Generator
+    public static function mapAll(Response $response)
     {
         foreach ($response->getResponseDocument()->getElementsByTagName("office") as $officeElement) {
             yield self::mapElement($officeElement);
@@ -32,7 +32,7 @@ class OfficeMapper extends BaseMapper
      * @param \DOMElement $officeElement
      * @return Office
      */
-    public static function mapElement(\DOMElement $officeElement): Office
+    public static function mapElement(\DOMElement $officeElement)
     {
         $office = new Office();
         $office->setName($officeElement->attributes->getNamedItem("name")->textContent);

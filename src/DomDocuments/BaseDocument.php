@@ -27,7 +27,7 @@ abstract class BaseDocument extends \DOMDocument
      *
      * @return string
      */
-    abstract protected function getRootTagName(): string;
+    abstract protected function getRootTagName();
 
     public function __construct($version = "1.0", $encoding = "UTF-8")
     {
@@ -37,7 +37,7 @@ abstract class BaseDocument extends \DOMDocument
         $this->appendChild($this->rootElement);
     }
 
-    protected function createBooleanAttribute(string $name, bool $value): \DOMAttr
+    protected function createBooleanAttribute(string $name, bool $value)
     {
         $attr = $this->createAttribute($name);
         $attr->value = Util::formatBoolean($value);
@@ -159,7 +159,7 @@ abstract class BaseDocument extends \DOMDocument
      * @param string $textContent
      * @return \DOMElement
      */
-    final protected function createNodeWithTextContent(string $tag, string $textContent): \DOMElement
+    final protected function createNodeWithTextContent(string $tag, string $textContent)
     {
         $element = $this->createElement($tag);
         $element->textContent = $textContent;

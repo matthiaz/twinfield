@@ -30,12 +30,12 @@ trait ValueFields
      *
      * @return bool
      */
-    abstract protected function isIncomingTransactionType(): bool;
+    abstract protected function isIncomingTransactionType();
 
     /**
      * @return DebitCredit
      */
-    public function getDebitCredit(): DebitCredit
+    public function getDebitCredit()
     {
         return $this->debitCredit ?? DebitCredit::CREDIT();
     }
@@ -75,7 +75,7 @@ trait ValueFields
         return $this;
     }
 
-    public function getValue(): Money
+    public function getValue()
     {
         /*
          * Always return the absolute value, Twinfield uses "debitcredit" fields instead of signs.
@@ -83,7 +83,7 @@ trait ValueFields
         return $this->value->absolute();
     }
 
-    public function getSignedValue(): Money
+    public function getSignedValue()
     {
         return $this->value;
     }

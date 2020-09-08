@@ -37,7 +37,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      *
      * @return PurchaseTransaction
      */
-    public function getTransaction(): PurchaseTransaction
+    public function getTransaction()
     {
         return $this->transaction;
     }
@@ -86,7 +86,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param DebitCredit $debitCredit
      * @return $this
      */
-    public function setDebitCredit(DebitCredit $debitCredit): BaseTransactionLine
+    public function setDebitCredit(DebitCredit $debitCredit)
     {
         return parent::setDebitCredit($debitCredit);
     }
@@ -101,7 +101,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      * @param Money $value
      * @return $this
      */
-    public function setValue(Money $value): BaseTransactionLine
+    public function setValue(Money $value)
     {
         return parent::setValue($value);
     }
@@ -167,7 +167,7 @@ class PurchaseTransactionLine extends BaseTransactionLine
      *
      * @return bool
      */
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return false;
     }

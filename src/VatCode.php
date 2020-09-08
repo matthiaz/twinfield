@@ -19,7 +19,7 @@ class VatCode
      */
     private $name;
 
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -29,7 +29,7 @@ class VatCode
         $this->code = $code;
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }

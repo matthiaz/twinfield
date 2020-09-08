@@ -24,16 +24,16 @@ trait LinesField
      * @return string The class name for transaction lines supported by this transaction. Must be an implementation of
      *                TransactionLine.
      */
-    abstract public function getLineClassName(): string;
+    abstract public function getLineClassName();
 
-    protected function getLineCount(): int
+    protected function getLineCount()
     {
         return $this->getLineCountForType(LineType::TOTAL())
             + $this->getLineCountForType(LineType::DETAIL())
             + $this->getLineCountForType(LineType::VAT());
     }
 
-    private function getLineCountForType(LineType $line_type): int
+    private function getLineCountForType(LineType $line_type)
     {
         return count($this->lines_per_type[$line_type->getValue()]);
     }
@@ -41,7 +41,7 @@ trait LinesField
     /**
      * @return TransactionLine[]
      */
-    public function getLines(): array
+    public function getLines()
     {
         /*
          * When creating the XML that is sent to Twinfield, the lines should always be put in the order: one total line,
@@ -55,17 +55,17 @@ trait LinesField
         );
     }
 
-    private function getTotalLines(): array
+    private function getTotalLines()
     {
         return $this->lines_per_type[LineType::TOTAL()->getValue()];
     }
 
-    private function getDetailLines(): array
+    private function getDetailLines()
     {
         return $this->lines_per_type[LineType::DETAIL()->getValue()];
     }
 
-    private function getVatLines(): array
+    private function getVatLines()
     {
         return $this->lines_per_type[LineType::VAT()->getValue()];
     }

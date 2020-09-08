@@ -29,7 +29,7 @@ trait StartAndCloseValueFields
      */
     private $closevalue;
 
-    public function getCurrency(): Currency
+    public function getCurrency()
     {
         return $this->currency;
     }
@@ -48,7 +48,7 @@ trait StartAndCloseValueFields
         return $this;
     }
 
-    public function getStartvalue(): Money
+    public function getStartvalue()
     {
         return $this->startvalue;
     }
@@ -60,7 +60,7 @@ trait StartAndCloseValueFields
         $this->closevalue = $startvalue;
     }
 
-    public function getClosevalue(): Money
+    public function getClosevalue()
     {
         return $this->closevalue ?? new Money(0, $this->getCurrency());
     }

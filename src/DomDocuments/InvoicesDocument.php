@@ -16,7 +16,7 @@ use PhpTwinfield\Invoice;
  */
 class InvoicesDocument extends BaseDocument
 {
-    final protected function getRootTagName(): string
+    final protected function getRootTagName()
     {
         return "salesinvoices";
     }

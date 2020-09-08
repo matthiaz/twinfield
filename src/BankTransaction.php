@@ -70,7 +70,7 @@ class BankTransaction implements Transaction
         $this->startvalue = new Money(0, $this->getCurrency());
     }
 
-    public function getLineClassName(): string
+    public function getLineClassName()
     {
         return Transactions\BankTransactionLine\Base::class;
     }
@@ -86,7 +86,7 @@ class BankTransaction implements Transaction
         return $this->origin;
     }
 
-    public function getInputDate(): \DateTimeInterface
+    public function getInputDate()
     {
         return $this->inputDate;
     }

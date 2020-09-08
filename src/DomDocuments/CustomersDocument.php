@@ -23,7 +23,7 @@ class CustomersDocument extends BaseDocument
      *
      * @return string
      */
-    protected function getRootTagName(): string
+    protected function getRootTagName()
     {
         return 'dimensions';
     }

@@ -41,7 +41,7 @@ abstract class AuthenticatedConnection
      * @throws Exception
      * @return BaseService
      */
-    public function getAuthenticatedClient(Services $service): BaseService
+    public function getAuthenticatedClient(Services $service)
     {
         $this->login();
 

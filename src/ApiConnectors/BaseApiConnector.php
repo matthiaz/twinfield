@@ -55,7 +55,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
      * @see sendXmlDocument()
      * @throws Exception
      */
-    protected function getProcessXmlService(): ProcessXmlService
+    protected function getProcessXmlService()
     {
         return $this->connection->getAuthenticatedClient(Services::PROCESSXML());
     }
@@ -168,7 +168,7 @@ abstract class BaseApiConnector implements LoggerAwareInterface
     /**
      * @throws Exception
      */
-    protected function getFinderService(): FinderService
+    protected function getFinderService()
     {
         return $this->connection->getAuthenticatedClient(Services::FINDER());
     }

@@ -11,14 +11,14 @@ use Webmozart\Assert\Assert;
 
 final class Util
 {
-    public static function formatMoney(Money $money): string
+    public static function formatMoney(Money $money)
     {
         $decimalformatter = new DecimalMoneyFormatter(new ISOCurrencies());
 
         return $decimalformatter->format($money);
     }
 
-    public static function parseMoney(string $moneyString, Currency $currency): Money
+    public static function parseMoney(string $moneyString, Currency $currency)
     {
         $parser = new DecimalMoneyParser(new ISOCurrencies());
         return $parser->parse($moneyString, $currency);
@@ -30,7 +30,7 @@ final class Util
      * @param \DateTimeInterface $date
      * @return string
      */
-    public static function formatDate(\DateTimeInterface $date): string
+    public static function formatDate(\DateTimeInterface $date)
     {
         return $date->format("Ymd");
     }
@@ -81,7 +81,7 @@ final class Util
      * @param bool $boolean
      * @return string
      */
-    public static function formatBoolean(bool $boolean): string
+    public static function formatBoolean(bool $boolean)
     {
         return $boolean ? "true" : "false";
     }
@@ -91,7 +91,7 @@ final class Util
      * @return bool
      * @throws Exception
      */
-    public static function parseBoolean(string $input): bool
+    public static function parseBoolean(string $input)
     {
         switch ($input) {
             case "true":
@@ -110,7 +110,7 @@ final class Util
      * @param object $object
      * @return bool
      */
-    public static function objectUses(string $trait, $object): bool
+    public static function objectUses(string $trait, $object)
     {
         Assert::object($object);
 
@@ -125,7 +125,7 @@ final class Util
         return in_array($trait, $traits);
     }
 
-    public static function getPrettyXml(\DOMDocument $document): string
+    public static function getPrettyXml(\DOMDocument $document)
     {
         $oldPreserveWhiteSpace = $document->preserveWhiteSpace;
         $oldFormatOutput = $document->formatOutput;

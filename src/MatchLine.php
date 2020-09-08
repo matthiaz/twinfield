@@ -49,7 +49,7 @@ class MatchLine
      * If you want to add a write off, add it manually with setWriteOff(). Pass $value for partial matching.
      * @see setWriteOff()
      */
-    public static function addToMatchSet(MatchSet $set, MatchReferenceInterface $reference, Money $value = null): self
+    public static function addToMatchSet(MatchSet $set, MatchReferenceInterface $reference, Money $value = null)
     {
         Assert::eq($set->getOffice(), $reference->getOffice());
 
@@ -73,17 +73,17 @@ class MatchLine
     /**
      * @return string
      */
-    public function getTranscode(): string
+    public function getTranscode()
     {
         return $this->transcode;
     }
 
-    public function getTransnumber(): int
+    public function getTransnumber()
     {
         return $this->transnumber;
     }
 
-    public function getTransline(): int
+    public function getTransline()
     {
         return $this->transline;
     }
@@ -111,7 +111,7 @@ class MatchLine
     /**
      * Optional; only for exchange rate differences, write-off or deduction. Include an "-" on credit lines.
      */
-    public function setWriteOff(Money $amount, Enums\WriteOffType $type): self
+    public function setWriteOff(Money $amount, Enums\WriteOffType $type)
     {
         $this->writeoff = $amount;
         $this->writeofftype = $type;
@@ -121,6 +121,7 @@ class MatchLine
 
     /**
      * Add the type attribute in order to determine what to do with the match difference.
+	 * @return Enums\WriteOffType|null
      */
     public function getWriteOffType()
     {

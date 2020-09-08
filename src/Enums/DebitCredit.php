@@ -13,7 +13,7 @@ class DebitCredit extends Enum
     const DEBIT = "debit";
     const CREDIT = "credit";
 
-    final public function invert(): self
+    final public function invert()
     {
         if ($this->equals(self::DEBIT())) {
             return self::CREDIT();

@@ -22,7 +22,7 @@ class JournalTransaction extends BaseTransaction
     /**
      * @return string
      */
-    public function getLineClassName(): string
+    public function getLineClassName()
     {
         return JournalTransactionLine::class;
     }

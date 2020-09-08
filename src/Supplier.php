@@ -249,12 +249,12 @@ class Supplier
         return $this;
     }
 
-    public function getPayAvailable(): bool
+    public function getPayAvailable()
     {
         return $this->payAvailable;
     }
 
-    public function setPayAvailable(bool $payAvailable): self
+    public function setPayAvailable(bool $payAvailable)
     {
         $this->payAvailable = $payAvailable;
         return $this;
@@ -271,12 +271,12 @@ class Supplier
         return $this;
     }
 
-    public function getEBilling(): bool
+    public function getEBilling()
     {
         return $this->eBilling;
     }
 
-    public function setEBilling(bool $eBilling): self
+    public function setEBilling(bool $eBilling)
     {
         $this->eBilling = $eBilling;
         return $this;

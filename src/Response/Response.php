@@ -54,7 +54,7 @@ class Response
     /**
      * Returns the raw DOMDocument response.
      */
-    public function getResponseDocument(): \DOMDocument
+    public function getResponseDocument()
     {
         return $this->responseDocument;
     }
@@ -105,7 +105,7 @@ class Response
      *
      * @return string[]
      */
-    private function getMessages(string $type): array
+    private function getMessages(string $type)
     {
         $xpath = new \DOMXPath($this->responseDocument);
 
@@ -127,7 +127,7 @@ class Response
      *
      * @return string[]
      */
-    public function getErrorMessages(): array
+    public function getErrorMessages()
     {
         return $this->getMessages('error');
     }
@@ -140,7 +140,7 @@ class Response
      *
      * @return string[]
      */
-    public function getWarningMessages(): array
+    public function getWarningMessages()
     {
         return $this->getMessages('warning');
     }

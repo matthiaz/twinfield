@@ -29,7 +29,7 @@ class MatchDocument extends BaseDocument
         $this->rootElement->appendChild($set);
     }
 
-    private function createLineElement(MatchLine $line): \DOMElement
+    private function createLineElement(MatchLine $line)
     {
         $element = $this->createElement("line");
 
@@ -55,7 +55,7 @@ class MatchDocument extends BaseDocument
         return $element;
     }
 
-    protected function getRootTagName(): string
+    protected function getRootTagName()
     {
         return "match";
     }

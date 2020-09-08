@@ -18,7 +18,7 @@ class MatchSetMapper extends BaseMapper
      *
      * @return MatchSet
      */
-    public static function map(\DOMDocument $document): MatchSet
+    public static function map(\DOMDocument $document)
     {
         $matchSet = self::createMatchSetFrom($document);
 
@@ -27,7 +27,7 @@ class MatchSetMapper extends BaseMapper
         return $matchSet;
     }
 
-    private static function createMatchSetFrom(\DOMDocument $document): MatchSet
+    private static function createMatchSetFrom(\DOMDocument $document)
     {
         $matchSet = new MatchSet();
 

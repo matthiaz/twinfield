@@ -16,7 +16,7 @@ class ProcessXmlService extends BaseService
      */
     const MAX_CHILDREN = 25;
 
-    protected function WSDL(): string
+    protected function WSDL()
     {
         return "/webservices/processxml.asmx?wsdl";
     }
@@ -25,7 +25,7 @@ class ProcessXmlService extends BaseService
      * @param array $items
      * @return array[]
      */
-    public function chunk(array $items): array
+    public function chunk(array $items)
     {
         return array_chunk($items, self::MAX_CHILDREN);
     }
@@ -46,7 +46,7 @@ class ProcessXmlService extends BaseService
      * @throws \SoapFault
      * @throws \ErrorException
      */
-    public function sendDocument(\DOMDocument $document): Response
+    public function sendDocument(\DOMDocument $document)
     {
         $result = $this->ProcessXmlString(
             array('xmlRequest' => $document->saveXML())
@@ -65,7 +65,7 @@ class ProcessXmlService extends BaseService
      * @param callable $mapCallback The callback should return the mapped object (e.g. a PurchaseTransaction) based on the response.
      * @return MappedResponseCollection
      */
-    public function mapAll(array $responses, string $individualTag, callable $mapCallback): MappedResponseCollection
+    public function mapAll(array $responses, string $individualTag, callable $mapCallback)
     {
         $mappedResponses = new MappedResponseCollection();
 

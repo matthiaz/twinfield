@@ -71,7 +71,7 @@ class WebservicesAuthentication extends AuthenticatedConnection
         );
     }
 
-    protected function getCluster(): string
+    protected function getCluster()
     {
         return $this->cluster;
     }

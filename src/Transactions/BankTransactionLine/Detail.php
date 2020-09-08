@@ -24,7 +24,7 @@ class Detail extends Base
      * @param Money $vatValue
      * @return Detail
      */
-    public function setVatValue(Money $vatValue): Detail
+    public function setVatValue(Money $vatValue)
     {
         $this->vatValue = $vatValue;
 
@@ -35,7 +35,7 @@ class Detail extends Base
      * @param Money $vatBaseValue
      * @return Detail
      */
-    public function setVatBaseValue(Money $vatBaseValue): Detail
+    public function setVatBaseValue(Money $vatBaseValue)
     {
         $this->vatBaseValue = $vatBaseValue;
 
@@ -46,7 +46,7 @@ class Detail extends Base
      * @param Money $vatRepValue
      * @return Detail
      */
-    public function setVatRepValue(Money $vatRepValue): Detail
+    public function setVatRepValue(Money $vatRepValue)
     {
         $this->vatRepValue = $vatRepValue;
 
@@ -111,7 +111,7 @@ class Detail extends Base
      * @param DebitCredit $debitCredit
      * @return Detail
      */
-    public function setDebitCredit(DebitCredit $debitCredit): self
+    public function setDebitCredit(DebitCredit $debitCredit)
     {
         return parent::setDebitCredit($debitCredit);
     }

@@ -34,7 +34,7 @@ class CustomerCollectMandate
     /**
      * @return string
      */
-    public function getID(): string
+    public function getID()
     {
         return $this->ID;
     }
@@ -43,7 +43,7 @@ class CustomerCollectMandate
      * @param string $ID
      * @return $this
      */
-    public function setID(string $ID): self
+    public function setID(string $ID)
     {
         Assert::maxLength($ID, 35);
         $this->ID = $ID;

@@ -56,7 +56,7 @@ class TransactionApiConnector extends BaseApiConnector
      * @return BaseTransaction
      * @throws Exception
      */
-    public function send(BaseTransaction $transaction): BaseTransaction
+    public function send(BaseTransaction $transaction)
     {
         foreach($this->sendAll([$transaction]) as $each) {
             return $each->unwrap();
@@ -70,7 +70,7 @@ class TransactionApiConnector extends BaseApiConnector
      * @return MappedResponseCollection
      * @throws Exception
      */
-    public function sendAll(array $transactions): MappedResponseCollection
+    public function sendAll(array $transactions)
     {
         Assert::allIsInstanceOf($transactions, BaseTransaction::class);
 

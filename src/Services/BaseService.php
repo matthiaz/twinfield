@@ -16,7 +16,7 @@ abstract class BaseService extends \SoapClient
      *
      * @return string
      */
-    abstract protected function WSDL(): string;
+    abstract protected function WSDL();
 
     /**
      * @param string|null $wsdl    Note you should always pass null as the first argument, the WSDL will be overridden.

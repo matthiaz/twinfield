@@ -13,7 +13,7 @@ class BrowseFieldOption
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -22,7 +22,7 @@ class BrowseFieldOption
      * @param string $code
      * @return BrowseFieldOption
      */
-    public function setCode(string $code): BrowseFieldOption
+    public function setCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -40,7 +40,7 @@ class BrowseFieldOption
      * @param string $name
      * @return BrowseFieldOption
      */
-    public function setName(string $name): BrowseFieldOption
+    public function setName(string $name)
     {
         $this->name = $name;
         return $this;

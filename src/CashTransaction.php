@@ -28,7 +28,7 @@ class CashTransaction extends BaseTransaction
     /**
      * @return string
      */
-    public function getLineClassName(): string
+    public function getLineClassName()
     {
         return CashTransactionLine::class;
     }

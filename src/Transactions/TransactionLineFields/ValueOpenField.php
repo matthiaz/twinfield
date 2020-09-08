@@ -15,7 +15,7 @@ trait ValueOpenField
      */
     protected $valueOpen;
 
-    abstract public function getLineType(): LineType;
+    abstract public function getLineType();
 
     /**
      * @return Money|null

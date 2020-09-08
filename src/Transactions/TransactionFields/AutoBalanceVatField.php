@@ -23,7 +23,7 @@ trait AutoBalanceVatField
      * @param bool $autoBalanceVat
      * @return $this
      */
-    public function setAutoBalanceVat(bool $autoBalanceVat): self
+    public function setAutoBalanceVat(bool $autoBalanceVat)
     {
         $this->autoBalanceVat = $autoBalanceVat;
 

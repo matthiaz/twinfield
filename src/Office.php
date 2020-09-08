@@ -26,7 +26,7 @@ class Office
         return $instance;
     }
 
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -36,7 +36,7 @@ class Office
         $this->code = $code;
     }
 
-    public function getCountryCode(): string
+    public function getCountryCode()
     {
         return $this->countryCode;
     }
@@ -46,7 +46,7 @@ class Office
         $this->countryCode = $countryCode;
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }

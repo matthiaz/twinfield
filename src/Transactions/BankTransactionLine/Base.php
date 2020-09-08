@@ -60,7 +60,7 @@ abstract class Base implements TransactionLine
      *
      * @return BankTransaction
      */
-    public function getTransaction(): BankTransaction
+    public function getTransaction()
     {
         return $this->transaction;
     }
@@ -78,7 +78,7 @@ abstract class Base implements TransactionLine
     /**
      * @return LineType
      */
-    final public function getLineType(): LineType
+    final public function getLineType()
     {
         return $this->lineType;
     }
@@ -146,7 +146,7 @@ abstract class Base implements TransactionLine
         return $this;
     }
 
-    public function getReference(): MatchReferenceInterface
+    public function getReference()
     {
         $transaction = $this->getTransaction();
 
@@ -158,7 +158,7 @@ abstract class Base implements TransactionLine
         );
     }
 
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return true;
     }

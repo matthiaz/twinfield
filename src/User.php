@@ -19,7 +19,7 @@ class User
      */
     private $shortName;
 
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -29,7 +29,7 @@ class User
         $this->code = $code;
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -39,7 +39,7 @@ class User
         $this->name = $name;
     }
 
-    public function getShortName(): string
+    public function getShortName()
     {
         return $this->shortName;
     }

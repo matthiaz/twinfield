@@ -111,7 +111,7 @@ abstract class BaseTransactionLine implements TransactionLine
      */
     protected $vatValue;
 
-    public function getLineType(): LineType
+    public function getLineType()
     {
         return $this->lineType;
     }
@@ -120,7 +120,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param LineType $lineType
      * @return $this
      */
-    public function setLineType(LineType $lineType): BaseTransactionLine
+    public function setLineType(LineType $lineType)
     {
         $this->lineType = $lineType;
 
@@ -372,7 +372,7 @@ abstract class BaseTransactionLine implements TransactionLine
      *
      * @return MatchReferenceInterface
      */
-    public function getReference(): MatchReferenceInterface
+    public function getReference()
     {
         /** @var JournalTransaction|PurchaseTransaction|SalesTransaction $transaction */
         $transaction = $this->getTransaction();

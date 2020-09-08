@@ -32,7 +32,7 @@ trait PerformanceFields
      */
     protected $performanceDate;
 
-    abstract public function getLineType(): LineType;
+    abstract public function getLineType();
 
     /**
      * @return PerformanceType|null

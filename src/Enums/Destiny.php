@@ -5,8 +5,8 @@ namespace PhpTwinfield\Enums;
 use MyCLabs\Enum\Enum;
 
 /**
- * @method static Destiny TEMPORARY()
- * @method static Destiny FINAL()
+ * @method static Destiny::TEMPORARY()
+ * @method static Destiny::FINAL()
  */
 class Destiny extends Enum
 {

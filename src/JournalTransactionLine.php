@@ -38,7 +38,7 @@ class JournalTransactionLine extends BaseTransactionLine
      *
      * @return JournalTransaction
      */
-    public function getTransaction(): JournalTransaction
+    public function getTransaction()
     {
         return $this->transaction;
     }
@@ -48,7 +48,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setLineType(LineType $lineType): BaseTransactionLine
+    public function setLineType(LineType $lineType)
     {
         // Only 'detail' and 'vat' are supported.
         if ($lineType->equals(LineType::TOTAL())) {
@@ -98,7 +98,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @param Money $value
      * @return $this
      */
-    public function setValue(Money $value): BaseTransactionLine
+    public function setValue(Money $value)
     {
         parent::setValue($value);
         return $this;
@@ -179,7 +179,7 @@ class JournalTransactionLine extends BaseTransactionLine
      *
      * @return bool
      */
-    protected function isIncomingTransactionType(): bool
+    protected function isIncomingTransactionType()
     {
         return true;
     }

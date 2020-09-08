@@ -71,7 +71,7 @@ trait CodeNumberOfficeFields
      *
      * @return BookingReference
      */
-    public function getBookingReference(): BookingReference
+    public function getBookingReference()
     {
         return new BookingReference(
             $this->office,

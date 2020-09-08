@@ -16,15 +16,15 @@ interface BookingReferenceInterface
     /**
      * References the office in which the transaction was booked.
      */
-    public function getOffice(): Office;
+    public function getOffice();
 
     /**
      * References the daybook on which the transaction was booked.
      */
-    public function getCode(): string;
+    public function getCode();
 
     /**
      * References the transaction.
      */
-    public function getNumber(): int;
+    public function getNumber();
 }
