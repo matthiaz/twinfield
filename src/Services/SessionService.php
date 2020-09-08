@@ -7,7 +7,7 @@ use PhpTwinfield\Office;
 
 class SessionService extends BaseService {
 
-    private const CHANGE_OK = "Ok";
+    const CHANGE_OK = "Ok";
 
     /**
      * SessionService constructor.
