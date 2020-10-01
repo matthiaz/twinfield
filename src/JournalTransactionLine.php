@@ -67,7 +67,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1($dim1 = null): BaseTransactionLine
+    public function setDim1(string $dim1 = null): BaseTransactionLine
     {
         return parent::setDim1($dim1);
     }
@@ -81,7 +81,7 @@ class JournalTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setDim2($dim2 = null): BaseTransactionLine
+    public function setDim2(string $dim2 = null): BaseTransactionLine
     {
         if ($dim2 !== null && $this->getLineType()->equals(LineType::VAT())) {
             throw Exception::invalidDimensionForLineType(2, $this);

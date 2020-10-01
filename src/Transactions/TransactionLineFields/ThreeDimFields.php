@@ -28,7 +28,7 @@ trait ThreeDimFields
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1($dim1 = null)
+    public function setDim1(string $dim1 = null)
     {
         $this->dim1 = $dim1;
         return $this;
@@ -43,7 +43,7 @@ trait ThreeDimFields
      * @param string|null $dim2
      * @return $this
      */
-    public function setDim2($dim2 = null)
+    public function setDim2(string $dim2 = null)
     {
         $this->dim2 = $dim2;
         return $this;
@@ -58,7 +58,7 @@ trait ThreeDimFields
      * @param string|null $dim3
      * @return $this
      */
-    public function setDim3($dim3 = null)
+    public function setDim3(string $dim3 = null)
     {
         $this->dim3 = $dim3;
         return $this;

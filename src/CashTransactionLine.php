@@ -54,7 +54,7 @@ class CashTransactionLine extends BaseTransactionLine
      * @param string|null $dim1
      * @return $this
      */
-    public function setDim1($dim1 = null): BaseTransactionLine
+    public function setDim1(string $dim1 = null): BaseTransactionLine
     {
         return parent::setDim1($dim1);
     }
@@ -70,7 +70,7 @@ class CashTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setDim2($dim2 = null): BaseTransactionLine
+    public function setDim2(string $dim2 = null): BaseTransactionLine
     {
         if ($dim2 !== null &&
             ($this->getLineType()->equals(LineType::VAT()) || $this->getLineType()->equals(LineType::TOTAL()))) {
@@ -91,7 +91,7 @@ class CashTransactionLine extends BaseTransactionLine
      * @return $this
      * @throws Exception
      */
-    public function setDim3($dim3 = null): BaseTransactionLine
+    public function setDim3(string $dim3 = null): BaseTransactionLine
     {
         if ($dim3 !== null &&
             ($this->getLineType()->equals(LineType::VAT()) || $this->getLineType()->equals(LineType::TOTAL()))) {
