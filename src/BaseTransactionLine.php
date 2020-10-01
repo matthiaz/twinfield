@@ -253,7 +253,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param string|null $matchStatus
      * @return $this
      */
-    public function setMatchStatus($matchStatus = null): BaseTransactionLine
+    public function setMatchStatus(string $matchStatus = null): BaseTransactionLine
     {
         $this->matchStatus = $matchStatus;
 
@@ -272,7 +272,7 @@ abstract class BaseTransactionLine implements TransactionLine
      * @param int|null $matchLevel
      * @return $this
      */
-    public function setMatchLevel($matchLevel = null): BaseTransactionLine
+    public function setMatchLevel(int $matchLevel = null): BaseTransactionLine
     {
         $this->matchLevel = $matchLevel;
 
